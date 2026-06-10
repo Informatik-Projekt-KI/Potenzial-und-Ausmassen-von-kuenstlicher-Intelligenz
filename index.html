@@ -2,49 +2,135 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <title>Startseite – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Künstliche Intelligenz – Startseite</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111111;
+            border-radius: 18px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .logo {
+            font-family: "Bauhaus 93", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            color: #f5f5f5;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .nav-links a.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .content-card {
+            background: #181818;
+            border-radius: 24px;
+            padding: 24px 26px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-family: "Bauhaus 93", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        h2, h3 {
+            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            letter-spacing: 1px;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+    </style>
 </head>
-
 <body>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Startseite</a></li>
-            <li><a href="umfrage.html">Umfrage</a></li>
-            <li><a href="potenzial.html">Potenzial KI</a></li>
-            <li><a href="auswirkungen.html">Auswirkungen KI</a></li>
-            <li><a href="quiz.html">Quiz</a></li>
-            <li><a href="chatbot.html">Chatbot</a></li>
-            <li><a href="quellen.html">Quellen</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hauptinhalt -->
-    <header class="hero">
-        <h1>Künstliche Intelligenz</h1>
-        <h2>Wie bewusst nutzen wir KI und inwiefern sind uns die Ausmasse davon bekannt?</h2>
+<div class="page-wrapper">
+    <header class="nav-bar">
+        <div class="logo">KI-Projekt</div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Startseite</a>
+            <a href="umfrage.html">Umfrage</a>
+            <a href="potenzial-ki.html">Potenzial KI</a>
+            <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quellen.html">Quellen</a>
+        </nav>
     </header>
 
-    <section class="einleitung">
-        <h3>Einleitung</h3>
+    <main class="content-card">
+        <h1>Startseite</h1>
+        <h2>Willkommen zu unserem KI-Projekt</h2>
         <p>
-            Herzlich willkommen, liebe Leser*innen.<br><br>
-            Unsere Namen sind xxx und wir sind Schüler der Kantonsschule xxx.
-            Wir haben diese Website erstellt, um die Ergebnisse unserer umfangreichen und spannenden
-            Umfrage zum Thema <em>Künstliche Intelligenz</em> zu präsentieren.
-            Die Schlussfolgerungen und der Vergleich ausgewählter Ergebnisse sollen dabei ermöglichen,
-            das Potenzial der heutigen KI besser einschätzen zu können.
-            <br><br>
-            Zudem werden sowohl die bekannten als auch die weniger bekannten Auswirkungen von KI
-            anschaulich dargestellt. Ergänzende Recherchen unterstützen die Inhalte zusätzlich,
-            damit unsere Website noch informativer und verständlicher wird.
-            <br><br>
-            Wir wünschen viel Spaß beim Lesen!
+            Hier kannst du einen Überblick über das Thema Künstliche Intelligenz bekommen:
+            von einer Umfrage über das Potenzial und die Auswirkungen von KI
+            bis hin zu einem Quiz, einem Chatbot und den verwendeten Quellen.
         </p>
-    </section>
-
+        <p>
+            Nutze die Reiter oben, um zwischen den einzelnen Bereichen zu wechseln.
+            Jede Seite ist eigenständig aufgebaut, damit du dich voll auf den jeweiligen Inhalt konzentrieren kannst.
+        </p>
+    </main>
+</div>
 </body>
 </html>
