@@ -90,20 +90,20 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* Diagramme kleiner */
-        canvas {
+        /* Kreisdiagramme */
+        canvas.small-chart {
             max-width: 260px;
             max-height: 260px;
-            margin-top: 10px;
         }
 
         /* Wordcloud Container */
         .wordcloud {
             width: 100%;
-            height: 300px;
+            height: 260px;
             margin-top: 20px;
             background: #151515;
             border-radius: 16px;
+            overflow: hidden;
         }
 
         /* Legenden rechts */
@@ -127,6 +127,12 @@
             width: 14px;
             height: 14px;
             border-radius: 4px;
+        }
+
+        /* Frage 7 – großes Diagramm */
+        #chart7 {
+            width: 100% !important;
+            height: 900px !important;
         }
     </style>
 </head>
@@ -162,7 +168,7 @@
         <div class="question-box">
             <h2>1. Wie alt sind Sie?</h2>
             <div class="chart-wrapper">
-                <canvas id="chart1"></canvas>
+                <canvas id="chart1" class="small-chart"></canvas>
                 <div class="legend-box" id="legend1"></div>
             </div>
         </div>
@@ -171,7 +177,7 @@
         <div class="question-box">
             <h2>2. Welches Geschlecht haben Sie?</h2>
             <div class="chart-wrapper">
-                <canvas id="chart2"></canvas>
+                <canvas id="chart2" class="small-chart"></canvas>
                 <div class="legend-box" id="legend2"></div>
             </div>
         </div>
@@ -192,7 +198,7 @@
         <div class="question-box">
             <h2>5. Wie ist Ihre Beziehung zu künstlicher Intelligenz?</h2>
             <div class="chart-wrapper">
-                <canvas id="chart5"></canvas>
+                <canvas id="chart5" class="small-chart"></canvas>
                 <div class="legend-box" id="legend5"></div>
             </div>
         </div>
@@ -201,12 +207,12 @@
         <div class="question-box">
             <h2>6. Wissen Sie welche ökologischen Auswirkungen künstliche Intelligenz hat?</h2>
             <div class="chart-wrapper">
-                <canvas id="chart6"></canvas>
+                <canvas id="chart6" class="small-chart"></canvas>
                 <div class="legend-box" id="legend6"></div>
             </div>
         </div>
 
-        <!-- FRAGE 7 (kombiniert) -->
+        <!-- FRAGE 7 -->
         <div class="question-box">
             <h2>7. Von welchen der folgenden Geräten oder Dienstleistungen wussten Sie, dass sie künstliche Intelligenz verwenden?</h2>
             <canvas id="chart7"></canvas>
@@ -216,7 +222,7 @@
         <div class="question-box">
             <h2>8. Waren Sie sich bewusst in wie vielen Bereichen künstliche Intelligenz schon verwendet wird?</h2>
             <div class="chart-wrapper">
-                <canvas id="chart8"></canvas>
+                <canvas id="chart8" class="small-chart"></canvas>
                 <div class="legend-box" id="legend8"></div>
             </div>
         </div>
@@ -307,17 +313,23 @@ WordCloud(document.getElementById('wordcloud4'), {
         ["Antwort", 14], ["Daten", 13], ["Roboter", 12], ["Internet", 12],
         ["Hilfe", 11], ["Gehirn", 10], ["Algorithmen", 10], ["künstliche Intelligenz", 9]
     ],
-    gridSize: 10,
-    weightFactor: 3,
+    gridSize: 12,
+    weightFactor: 2.5,
     color: "#ffffff",
-    backgroundColor: "#151515"
+    backgroundColor: "#151515",
+    shrinkToFit: true
 });
 
 /* ---------------------- FRAGE 5 ---------------------- */
 const chart5 = new Chart(document.getElementById("chart5"), {
     type: "pie",
     data: {
-        labels: ["Ich stehe neutral zu KI", "Ich habe Angst vor KI", "Ich sehe das Potenzial in der Entwicklung von KI", "Ich bin gegen KI"],
+        labels: [
+            "Ich stehe neutral zu KI",
+            "Ich habe Angst vor KI",
+            "Ich sehe das Potenzial in der Entwicklung von KI",
+            "Ich bin gegen KI"
+        ],
         datasets: [{
             data: [57, 12, 52, 17],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0"]
@@ -380,7 +392,11 @@ new Chart(document.getElementById("chart7"), {
     },
     options: {
         indexAxis: "y",
-        plugins: { legend: { display: false } }
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { ticks: { color: "#ffffff", font: { size: 12 } } },
+            x: { ticks: { color: "#ffffff" } }
+        }
     }
 });
 
@@ -410,10 +426,11 @@ WordCloud(document.getElementById('wordcloud9'), {
         ["Lernen", 13], ["Kunst", 12], ["Bereichen", 12], ["KI", 11],
         ["Person", 10], ["Ahnung", 9], ["Keiner", 8], ["ka", 8]
     ],
-    gridSize: 10,
-    weightFactor: 3,
+    gridSize: 12,
+    weightFactor: 2.5,
     color: "#ffffff",
-    backgroundColor: "#151515"
+    backgroundColor: "#151515",
+    shrinkToFit: true
 });
 </script>
 </body>
