@@ -90,11 +90,11 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* Diagramme kleiner machen */
+        /* Diagramme kleiner */
         canvas {
-            max-width: 350px;
-            max-height: 350px;
-            margin-top: 20px;
+            max-width: 260px;
+            max-height: 260px;
+            margin-top: 10px;
         }
 
         /* Wordcloud Container */
@@ -104,6 +104,29 @@
             margin-top: 20px;
             background: #151515;
             border-radius: 16px;
+        }
+
+        /* Legenden rechts */
+        .chart-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .legend-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 14px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -131,13 +154,19 @@
         <!-- FRAGE 1 -->
         <div class="question-box">
             <h2>1. Wie alt sind Sie?</h2>
-            <canvas id="chart1"></canvas>
+            <div class="chart-wrapper">
+                <canvas id="chart1"></canvas>
+                <div class="legend-box" id="legend1"></div>
+            </div>
         </div>
 
         <!-- FRAGE 2 -->
         <div class="question-box">
             <h2>2. Welches Geschlecht haben Sie?</h2>
-            <canvas id="chart2"></canvas>
+            <div class="chart-wrapper">
+                <canvas id="chart2"></canvas>
+                <div class="legend-box" id="legend2"></div>
+            </div>
         </div>
 
         <!-- FRAGE 3 -->
@@ -148,52 +177,78 @@
 
         <!-- FRAGE 4 -->
         <div class="question-box">
-            <h2>4. Wie definieren Sie künstliche Intelligenz?</h2>
+            <h2>4. Wie würden Sie das Wort „künstliche Intelligenz“ definieren?</h2>
             <div id="wordcloud4" class="wordcloud"></div>
         </div>
 
         <!-- FRAGE 5 -->
         <div class="question-box">
-            <h2>5. Beziehung zu KI</h2>
-            <canvas id="chart5"></canvas>
+            <h2>5. Wie ist Ihre Beziehung zu künstlicher Intelligenz?</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart5"></canvas>
+                <div class="legend-box" id="legend5"></div>
+            </div>
         </div>
 
         <!-- FRAGE 6 -->
         <div class="question-box">
-            <h2>6. Wissen über ökologische Auswirkungen</h2>
-            <canvas id="chart6"></canvas>
+            <h2>6. Wissen Sie welche ökologischen Auswirkungen künstliche Intelligenz hat?</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart6"></canvas>
+                <div class="legend-box" id="legend6"></div>
+            </div>
         </div>
 
-        <!-- FRAGE 7a -->
+        <!-- FRAGE 7 (kombiniert) -->
         <div class="question-box">
-            <h2>7. Bekannte KI-Geräte & Dienstleistungen</h2>
-            <canvas id="chart7a"></canvas>
-        </div>
-
-        <!-- FRAGE 7b -->
-        <div class="question-box">
-            <h2>7. Bekannte KI-Anwendungen</h2>
-            <canvas id="chart7b"></canvas>
+            <h2>7. Von welchen der folgenden Geräten oder Dienstleistungen wussten Sie, dass sie künstliche Intelligenz verwenden?</h2>
+            <canvas id="chart7"></canvas>
         </div>
 
         <!-- FRAGE 8 -->
         <div class="question-box">
-            <h2>8. Bewusstsein über KI-Verbreitung</h2>
-            <canvas id="chart8"></canvas>
+            <h2>8. Waren Sie sich bewusst in wie vielen Bereichen künstliche Intelligenz schon verwendet wird?</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart8"></canvas>
+                <div class="legend-box" id="legend8"></div>
+            </div>
         </div>
 
         <!-- FRAGE 9 -->
         <div class="question-box">
-            <h2>9. Gewünschte KI-Anwendungen</h2>
+            <h2>9. In welchen Bereichen würden Sie sich die Anwendung von künstlicher Intelligenz wünschen?</h2>
             <div id="wordcloud9" class="wordcloud"></div>
         </div>
 
     </main>
 </div>
-
 <script>
+/* Hilfsfunktion: Legendenerstellung */
+function createLegend(chart, legendId) {
+    const legendBox = document.getElementById(legendId);
+    legendBox.innerHTML = "";
+
+    chart.data.labels.forEach((label, i) => {
+        const color = chart.data.datasets[0].backgroundColor[i];
+
+        const item = document.createElement("div");
+        item.className = "legend-item";
+
+        const colorBox = document.createElement("div");
+        colorBox.className = "legend-color";
+        colorBox.style.backgroundColor = color;
+
+        const text = document.createElement("span");
+        text.textContent = label;
+
+        item.appendChild(colorBox);
+        item.appendChild(text);
+        legendBox.appendChild(item);
+    });
+}
+
 /* ---------------------- FRAGE 1 ---------------------- */
-new Chart(document.getElementById("chart1"), {
+const chart1 = new Chart(document.getElementById("chart1"), {
     type: "pie",
     data: {
         labels: ["12–20 Jahre", "21–30 Jahre", "31–45 Jahre", "45–60 Jahre", "60+ Jahre"],
@@ -201,11 +256,13 @@ new Chart(document.getElementById("chart1"), {
             data: [119, 0, 6, 11, 2],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0", "#7ED321"]
         }]
-    }
+    },
+    options: { plugins: { legend: { display: false } } }
 });
+createLegend(chart1, "legend1");
 
 /* ---------------------- FRAGE 2 ---------------------- */
-new Chart(document.getElementById("chart2"), {
+const chart2 = new Chart(document.getElementById("chart2"), {
     type: "pie",
     data: {
         labels: ["Weiblich", "Männlich", "Divers"],
@@ -213,8 +270,10 @@ new Chart(document.getElementById("chart2"), {
             data: [99, 36, 3],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
         }]
-    }
+    },
+    options: { plugins: { legend: { display: false } } }
 });
+createLegend(chart2, "legend2");
 
 /* ---------------------- FRAGE 3 ---------------------- */
 new Chart(document.getElementById("chart3"), {
@@ -227,7 +286,10 @@ new Chart(document.getElementById("chart3"), {
             backgroundColor: "#4A90E2"
         }]
     },
-    options: { indexAxis: "y" }
+    options: {
+        indexAxis: "y",
+        plugins: { legend: { display: false } }
+    }
 });
 
 /* ---------------------- FRAGE 4 – WORDCLOUD ---------------------- */
@@ -245,7 +307,7 @@ WordCloud(document.getElementById('wordcloud4'), {
 });
 
 /* ---------------------- FRAGE 5 ---------------------- */
-new Chart(document.getElementById("chart5"), {
+const chart5 = new Chart(document.getElementById("chart5"), {
     type: "pie",
     data: {
         labels: ["Neutral", "Angst", "Potenzial", "Gegen KI"],
@@ -253,11 +315,13 @@ new Chart(document.getElementById("chart5"), {
             data: [57, 12, 52, 17],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0"]
         }]
-    }
+    },
+    options: { plugins: { legend: { display: false } } }
 });
+createLegend(chart5, "legend5");
 
 /* ---------------------- FRAGE 6 ---------------------- */
-new Chart(document.getElementById("chart6"), {
+const chart6 = new Chart(document.getElementById("chart6"), {
     type: "doughnut",
     data: {
         labels: ["Ja", "Zum Teil", "Nein"],
@@ -265,47 +329,40 @@ new Chart(document.getElementById("chart6"), {
             data: [73, 56, 9],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
         }]
-    }
+    },
+    options: { plugins: { legend: { display: false } } }
 });
+createLegend(chart6, "legend6");
 
-/* ---------------------- FRAGE 7a ---------------------- */
-new Chart(document.getElementById("chart7a"), {
+/* ---------------------- FRAGE 7 – KOMBINIERTE VERSION ---------------------- */
+new Chart(document.getElementById("chart7"), {
     type: "bar",
     data: {
         labels: [
             "Smart Home Geräte", "Sprach Assistenten", "Fitness-Tracker", "E-Mail Filterung",
             "Suchmaschinen", "Chatbots Kundenservice", "Navigation", "Streaming",
-            "Online-Shopping", "Flug-Buchungen", "Autonome Fahrzeuge", "Kreditkartenbetrug"
-        ],
-        datasets: [{
-            label: "Anzahl",
-            data: [90, 115, 75, 57, 111, 121, 58, 36, 69, 42, 90, 47],
-            backgroundColor: "#4A90E2"
-        }]
-    },
-    options: { indexAxis: "y" }
-});
-
-/* ---------------------- FRAGE 7b ---------------------- */
-new Chart(document.getElementById("chart7b"), {
-    type: "bar",
-    data: {
-        labels: [
+            "Online-Shopping", "Flug-Buchungen", "Autonome Fahrzeuge", "Kreditkartenbetrug",
             "Face ID", "Produktentwicklungen", "Job-Bewerbungen", "Medikamente/Operationen",
             "Chatbots", "KI-Tools Lernen", "Kamera-Optimierung", "Bild/Video KI",
             "Fake News", "Sonstiges"
         ],
         datasets: [{
             label: "Anzahl",
-            data: [78, 63, 72, 63, 136, 134, 94, 122, 107, 6],
-            backgroundColor: "#50E3C2"
+            data: [
+                90, 115, 75, 57, 111, 121, 58, 36, 69, 42, 90, 47,
+                78, 63, 72, 63, 136, 134, 94, 122, 107, 6
+            ],
+            backgroundColor: "#4A90E2"
         }]
     },
-    options: { indexAxis: "y" }
+    options: {
+        indexAxis: "y",
+        plugins: { legend: { display: false } }
+    }
 });
 
 /* ---------------------- FRAGE 8 ---------------------- */
-new Chart(document.getElementById("chart8"), {
+const chart8 = new Chart(document.getElementById("chart8"), {
     type: "doughnut",
     data: {
         labels: ["Ja, ich kenne mehr", "Nein, überrascht", "Nein, erwartet"],
@@ -313,8 +370,10 @@ new Chart(document.getElementById("chart8"), {
             data: [36, 23, 79],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
         }]
-    }
+    },
+    options: { plugins: { legend: { display: false } } }
 });
+createLegend(chart8, "legend8");
 
 /* ---------------------- FRAGE 9 – WORDCLOUD ---------------------- */
 WordCloud(document.getElementById('wordcloud9'), {
@@ -330,7 +389,6 @@ WordCloud(document.getElementById('wordcloud9'), {
     backgroundColor: "#151515"
 });
 </script>
-
 </body>
 </html>
 
