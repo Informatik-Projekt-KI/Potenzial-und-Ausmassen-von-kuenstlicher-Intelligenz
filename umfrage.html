@@ -8,6 +8,9 @@
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Wordcloud Library -->
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.js"></script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -87,8 +90,20 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
+        /* Diagramme kleiner machen */
         canvas {
+            max-width: 350px;
+            max-height: 350px;
             margin-top: 20px;
+        }
+
+        /* Wordcloud Container */
+        .wordcloud {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            background: #151515;
+            border-radius: 16px;
         }
     </style>
 </head>
@@ -133,8 +148,8 @@
 
         <!-- FRAGE 4 -->
         <div class="question-box">
-            <h2>4. Definition von künstlicher Intelligenz (Wordcloud)</h2>
-            <p>Wordcloud kann ich dir ebenfalls als HTML generieren – sag einfach Bescheid.</p>
+            <h2>4. Wie definieren Sie künstliche Intelligenz?</h2>
+            <div id="wordcloud4" class="wordcloud"></div>
         </div>
 
         <!-- FRAGE 5 -->
@@ -149,15 +164,15 @@
             <canvas id="chart6"></canvas>
         </div>
 
-        <!-- FRAGE 7 (Teil 1) -->
+        <!-- FRAGE 7a -->
         <div class="question-box">
-            <h2>7. Bekannte KI-Geräte & Dienstleistungen (Teil 1)</h2>
+            <h2>7. Bekannte KI-Geräte & Dienstleistungen</h2>
             <canvas id="chart7a"></canvas>
         </div>
 
-        <!-- FRAGE 7 (Teil 2) -->
+        <!-- FRAGE 7b -->
         <div class="question-box">
-            <h2>7. Bekannte KI-Anwendungen (Teil 2)</h2>
+            <h2>7. Bekannte KI-Anwendungen</h2>
             <canvas id="chart7b"></canvas>
         </div>
 
@@ -169,8 +184,8 @@
 
         <!-- FRAGE 9 -->
         <div class="question-box">
-            <h2>9. Gewünschte KI-Anwendungen (Wordcloud)</h2>
-            <p>Auch hier kann ich dir eine Wordcloud als HTML bauen.</p>
+            <h2>9. Gewünschte KI-Anwendungen</h2>
+            <div id="wordcloud9" class="wordcloud"></div>
         </div>
 
     </main>
@@ -213,6 +228,20 @@ new Chart(document.getElementById("chart3"), {
         }]
     },
     options: { indexAxis: "y" }
+});
+
+/* ---------------------- FRAGE 4 – WORDCLOUD ---------------------- */
+WordCloud(document.getElementById('wordcloud4'), {
+    list: [
+        ["Intelligenz", 40], ["Menschen", 25], ["Maschine", 22], ["Computer", 20],
+        ["menschliche", 18], ["KI", 17], ["Wissen", 15], ["Fragen", 14],
+        ["Antwort", 14], ["Daten", 13], ["Roboter", 12], ["Internet", 12],
+        ["Hilfe", 11], ["Gehirn", 10], ["Algorithmen", 10], ["künstliche Intelligenz", 9]
+    ],
+    gridSize: 10,
+    weightFactor: 3,
+    color: "#ffffff",
+    backgroundColor: "#151515"
 });
 
 /* ---------------------- FRAGE 5 ---------------------- */
@@ -285,6 +314,20 @@ new Chart(document.getElementById("chart8"), {
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
         }]
     }
+});
+
+/* ---------------------- FRAGE 9 – WORDCLOUD ---------------------- */
+WordCloud(document.getElementById('wordcloud9'), {
+    list: [
+        ["Medizin", 40], ["Schule", 25], ["Forschung", 20], ["Menschen", 18],
+        ["Arbeit", 16], ["Erde", 15], ["Kochen", 14], ["Essen", 14],
+        ["Lernen", 13], ["Kunst", 12], ["Bereichen", 12], ["KI", 11],
+        ["Person", 10], ["Ahnung", 9], ["Keiner", 8], ["ka", 8]
+    ],
+    gridSize: 10,
+    weightFactor: 3,
+    color: "#ffffff",
+    backgroundColor: "#151515"
 });
 </script>
 
