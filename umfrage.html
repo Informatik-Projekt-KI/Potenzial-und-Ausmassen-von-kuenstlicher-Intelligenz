@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Umfrage – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -14,10 +18,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding: 20px;
         }
         .page-wrapper { width: 100%; max-width: 1100px; }
+
         .nav-bar {
             display: flex;
             justify-content: space-between;
@@ -29,17 +33,15 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
         .logo {
-            font-family: "Bauhaus 93", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Bauhaus 93", sans-serif;
             font-size: 26px;
-            letter-spacing: 1px;
         }
         .nav-links {
             display: flex;
             gap: 14px;
-            flex-wrap: wrap;
         }
         .nav-links a {
-            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Agency FB", sans-serif;
             font-size: 16px;
             text-decoration: none;
             color: #f5f5f5;
@@ -47,7 +49,7 @@
             border-radius: 999px;
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
         .nav-links a:hover {
             background: #ffffff;
@@ -56,36 +58,45 @@
         .nav-links a.active {
             background: #ffffff;
             color: #000000;
-            border-color: #ffffff;
         }
+
         .content-card {
             background: #181818;
             border-radius: 24px;
-            padding: 24px 26px;
+            padding: 24px;
             box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-            max-height: calc(100vh - 140px);
             overflow-y: auto;
         }
+
         h1 {
-            font-family: "Bauhaus 93", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Bauhaus 93", sans-serif;
             font-size: 40px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-family: "Agency FB", sans-serif;
+            font-size: 28px;
             margin-bottom: 10px;
         }
-        h2, h3 {
-            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            letter-spacing: 1px;
-            margin-top: 18px;
-            margin-bottom: 6px;
+
+        .question-box {
+            background: #202020;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        p {
-            line-height: 1.6;
-            margin-bottom: 10px;
-            font-size: 15px;
+
+        canvas {
+            margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
 <div class="page-wrapper">
+
+    <!-- NAVIGATION -->
     <header class="nav-bar">
         <div class="logo">KI-Projekt</div>
         <nav class="nav-links">
@@ -100,17 +111,183 @@
     </header>
 
     <main class="content-card">
-        <h1>Umfrage</h1>
-        <h2>Beschreibung der Umfrage</h2>
-        <p>
-            Hier kannst du die Ergebnisse unserer Umfrage zur Wahrnehmung von Künstlicher Intelligenz darstellen.
-            Du kannst z.B. Diagramme, Auswertungen oder Screenshots einfügen.
-        </p>
-        <h3>Mögliche Inhalte</h3>
-        <p>- Kurzbeschreibung der Zielgruppe</p>
-        <p>- Anzahl der Teilnehmenden</p>
-        <p>- Zentrale Ergebnisse (z.B. Balkendiagramme, Tabellen, Stichpunkte)</p>
+        <h1>Umfrage – Ergebnisse</h1>
+
+        <!-- FRAGE 1 -->
+        <div class="question-box">
+            <h2>1. Wie alt sind Sie?</h2>
+            <canvas id="chart1"></canvas>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question-box">
+            <h2>2. Welches Geschlecht haben Sie?</h2>
+            <canvas id="chart2"></canvas>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question-box">
+            <h2>3. Wie oft nutzen Sie künstliche Intelligenz?</h2>
+            <canvas id="chart3"></canvas>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question-box">
+            <h2>4. Definition von künstlicher Intelligenz (Wordcloud)</h2>
+            <p>Wordcloud kann ich dir ebenfalls als HTML generieren – sag einfach Bescheid.</p>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question-box">
+            <h2>5. Beziehung zu KI</h2>
+            <canvas id="chart5"></canvas>
+        </div>
+
+        <!-- FRAGE 6 -->
+        <div class="question-box">
+            <h2>6. Wissen über ökologische Auswirkungen</h2>
+            <canvas id="chart6"></canvas>
+        </div>
+
+        <!-- FRAGE 7 (Teil 1) -->
+        <div class="question-box">
+            <h2>7. Bekannte KI-Geräte & Dienstleistungen (Teil 1)</h2>
+            <canvas id="chart7a"></canvas>
+        </div>
+
+        <!-- FRAGE 7 (Teil 2) -->
+        <div class="question-box">
+            <h2>7. Bekannte KI-Anwendungen (Teil 2)</h2>
+            <canvas id="chart7b"></canvas>
+        </div>
+
+        <!-- FRAGE 8 -->
+        <div class="question-box">
+            <h2>8. Bewusstsein über KI-Verbreitung</h2>
+            <canvas id="chart8"></canvas>
+        </div>
+
+        <!-- FRAGE 9 -->
+        <div class="question-box">
+            <h2>9. Gewünschte KI-Anwendungen (Wordcloud)</h2>
+            <p>Auch hier kann ich dir eine Wordcloud als HTML bauen.</p>
+        </div>
+
     </main>
 </div>
+
+<script>
+/* ---------------------- FRAGE 1 ---------------------- */
+new Chart(document.getElementById("chart1"), {
+    type: "pie",
+    data: {
+        labels: ["12–20 Jahre", "21–30 Jahre", "31–45 Jahre", "45–60 Jahre", "60+ Jahre"],
+        datasets: [{
+            data: [119, 0, 6, 11, 2],
+            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0", "#7ED321"]
+        }]
+    }
+});
+
+/* ---------------------- FRAGE 2 ---------------------- */
+new Chart(document.getElementById("chart2"), {
+    type: "pie",
+    data: {
+        labels: ["Weiblich", "Männlich", "Divers"],
+        datasets: [{
+            data: [99, 36, 3],
+            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
+        }]
+    }
+});
+
+/* ---------------------- FRAGE 3 ---------------------- */
+new Chart(document.getElementById("chart3"), {
+    type: "bar",
+    data: {
+        labels: ["stündlich", "mehrmals am Tag", "mehrmals in der Woche", "einmal die Woche", "mehrmals im Monat", "einmal im Monat"],
+        datasets: [{
+            label: "Anzahl",
+            data: [2, 38, 60, 19, 10, 9],
+            backgroundColor: "#4A90E2"
+        }]
+    },
+    options: { indexAxis: "y" }
+});
+
+/* ---------------------- FRAGE 5 ---------------------- */
+new Chart(document.getElementById("chart5"), {
+    type: "pie",
+    data: {
+        labels: ["Neutral", "Angst", "Potenzial", "Gegen KI"],
+        datasets: [{
+            data: [57, 12, 52, 17],
+            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0"]
+        }]
+    }
+});
+
+/* ---------------------- FRAGE 6 ---------------------- */
+new Chart(document.getElementById("chart6"), {
+    type: "doughnut",
+    data: {
+        labels: ["Ja", "Zum Teil", "Nein"],
+        datasets: [{
+            data: [73, 56, 9],
+            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
+        }]
+    }
+});
+
+/* ---------------------- FRAGE 7a ---------------------- */
+new Chart(document.getElementById("chart7a"), {
+    type: "bar",
+    data: {
+        labels: [
+            "Smart Home Geräte", "Sprach Assistenten", "Fitness-Tracker", "E-Mail Filterung",
+            "Suchmaschinen", "Chatbots Kundenservice", "Navigation", "Streaming",
+            "Online-Shopping", "Flug-Buchungen", "Autonome Fahrzeuge", "Kreditkartenbetrug"
+        ],
+        datasets: [{
+            label: "Anzahl",
+            data: [90, 115, 75, 57, 111, 121, 58, 36, 69, 42, 90, 47],
+            backgroundColor: "#4A90E2"
+        }]
+    },
+    options: { indexAxis: "y" }
+});
+
+/* ---------------------- FRAGE 7b ---------------------- */
+new Chart(document.getElementById("chart7b"), {
+    type: "bar",
+    data: {
+        labels: [
+            "Face ID", "Produktentwicklungen", "Job-Bewerbungen", "Medikamente/Operationen",
+            "Chatbots", "KI-Tools Lernen", "Kamera-Optimierung", "Bild/Video KI",
+            "Fake News", "Sonstiges"
+        ],
+        datasets: [{
+            label: "Anzahl",
+            data: [78, 63, 72, 63, 136, 134, 94, 122, 107, 6],
+            backgroundColor: "#50E3C2"
+        }]
+    },
+    options: { indexAxis: "y" }
+});
+
+/* ---------------------- FRAGE 8 ---------------------- */
+new Chart(document.getElementById("chart8"), {
+    type: "doughnut",
+    data: {
+        labels: ["Ja, ich kenne mehr", "Nein, überrascht", "Nein, erwartet"],
+        datasets: [{
+            data: [36, 23, 79],
+            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
+        }]
+    }
+});
+</script>
+
 </body>
 </html>
+
