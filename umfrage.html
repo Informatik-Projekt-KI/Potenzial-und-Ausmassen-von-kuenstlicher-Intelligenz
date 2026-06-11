@@ -151,6 +151,13 @@
     <main class="content-card">
         <h1>Umfrage – Ergebnisse</h1>
 
+        <!-- EINLEITUNG -->
+        <div class="question-box">
+            <p style="font-size: 18px; line-height: 1.6;">
+                Die folgenden Fragen waren Teil unserer Umfrage und die jeweiligen Antwort-Statistiken sollen helfen, die Vielfalt der Antworten visuell besser darzustellen.
+            </p>
+        </div>
+
         <!-- FRAGE 1 -->
         <div class="question-box">
             <h2>1. Wie alt sind Sie?</h2>
@@ -310,7 +317,7 @@ WordCloud(document.getElementById('wordcloud4'), {
 const chart5 = new Chart(document.getElementById("chart5"), {
     type: "pie",
     data: {
-        labels: ["Neutral", "Angst", "Potenzial", "Gegen KI"],
+        labels: ["Ich stehe neutral zu KI", "Ich habe Angst vor KI", "Ich sehe das Potenzial in der Entwicklung von KI", "Ich bin gegen KI"],
         datasets: [{
             data: [57, 12, 52, 17],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0"]
@@ -339,12 +346,28 @@ new Chart(document.getElementById("chart7"), {
     type: "bar",
     data: {
         labels: [
-            "Smart Home Geräte", "Sprach Assistenten", "Fitness-Tracker", "E-Mail Filterung",
-            "Suchmaschinen", "Chatbots Kundenservice", "Navigation", "Streaming",
-            "Online-Shopping", "Flug-Buchungen", "Autonome Fahrzeuge", "Kreditkartenbetrug",
-            "Face ID", "Produktentwicklungen", "Job-Bewerbungen", "Medikamente/Operationen",
-            "Chatbots", "KI-Tools Lernen", "Kamera-Optimierung", "Bild/Video KI",
-            "Fake News", "Sonstiges"
+            "Smart Home Geräte",
+            "Sprach Assistenten",
+            "Persönliche Fitness-Tracker",
+            "E-Mail Filterung",
+            "Suchmaschinen",
+            "Chatbots im Kundenservice",
+            "Navigationssysteme",
+            "Streaming",
+            "Online-Shopping und Werbung",
+            "Flug-Buchungen (Preis Verhältnis)",
+            "Autonome Fahrzeuge",
+            "Erkennung von Kreditkartenbetrug",
+            "Face ID / Gesichtserkennung",
+            "Produktentwicklungen",
+            "Filterung von Job-Bewerbungen",
+            "In der Forschung und Entwicklung neuer Medikamente / Unterstützung bei Operationen",
+            "Chatbots wie ChatGPT, etc.",
+            "KI-Tools zum Lernen",
+            "Optimierung von Bildern in Kamera Apps",
+            "Bild und Video Generierung / Erkennung",
+            "Generierung von Fake News",
+            "Sonstiges"
         ],
         datasets: [{
             label: "Anzahl",
@@ -365,7 +388,11 @@ new Chart(document.getElementById("chart7"), {
 const chart8 = new Chart(document.getElementById("chart8"), {
     type: "doughnut",
     data: {
-        labels: ["Ja, ich kenne mehr", "Nein, überrascht", "Nein, erwartet"],
+        labels: [
+            "Ja, ich kenne sogar noch mehr",
+            "Nein, ich war überrascht",
+            "Nein, aber ich habe es erwartet"
+        ],
         datasets: [{
             data: [36, 23, 79],
             backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
