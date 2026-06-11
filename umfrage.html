@@ -131,8 +131,8 @@
 
         /* Frage 7 – großes Diagramm */
         #chart7 {
-            width: 100% !important;
-            height: 900px !important;
+            width: 1000px;
+            height: 1400px;
         }
     </style>
 </head>
@@ -314,7 +314,7 @@ WordCloud(document.getElementById('wordcloud4'), {
         ["Hilfe", 11], ["Gehirn", 10], ["Algorithmen", 10], ["künstliche Intelligenz", 9]
     ],
     gridSize: 12,
-    weightFactor: 2.5,
+    weightFactor: 2.2,
     color: "#ffffff",
     backgroundColor: "#151515",
     shrinkToFit: true
@@ -392,7 +392,12 @@ new Chart(document.getElementById("chart7"), {
     },
     options: {
         indexAxis: "y",
-        plugins: { legend: { display: false } },
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: { 
+            legend: { display: false },
+            tooltip: { enabled: true }
+        },
         scales: {
             y: { ticks: { color: "#ffffff", font: { size: 12 } } },
             x: { ticks: { color: "#ffffff" } }
@@ -427,7 +432,7 @@ WordCloud(document.getElementById('wordcloud9'), {
         ["Person", 10], ["Ahnung", 9], ["Keiner", 8], ["ka", 8]
     ],
     gridSize: 12,
-    weightFactor: 2.5,
+    weightFactor: 2.2,
     color: "#ffffff",
     backgroundColor: "#151515",
     shrinkToFit: true
