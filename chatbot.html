@@ -1,240 +1,262 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Chatbot – KI-Projekt</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Chatbot – KI-Projekt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    <style>
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
 
-body {
-  background: #000000;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
 
-  /* Tech-Hintergrund */
-  background-image:
-    radial-gradient(circle at top left, rgba(88,101,242,0.35), transparent 55%),
-    radial-gradient(circle at top right, rgba(155,89,182,0.35), transparent 55%),
-    radial-gradient(circle at bottom left, rgba(52,152,219,0.35), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(142,68,173,0.35), transparent 55%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 4px);
-  background-attachment: fixed;
-  background-size: cover;
-}
+        .page-wrapper { 
+            width: 100%; 
+            max-width: 1100px; 
+        }
 
-.page-wrapper { width: 100%; max-width: 1100px; }
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111111;
+            border-radius: 18px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
 
-/* NAVIGATION – hellgrau */
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #2a2a2a;
-  border-radius: 18px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
+        .logo {
+            font-family: "Bauhaus 93";
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
 
-.logo {
-  font-family: "Agency FB";
-  font-size: 26px;
-  letter-spacing: 1px;
-}
+        .nav-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
 
-.nav-links {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
+        .nav-links a {
+            font-family: "Agency FB";
+            font-size: 16px;
+            text-decoration: none;
+            color: #f5f5f5;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            transition: all 0.2s ease;
+        }
 
-.nav-links a {
-  font-family: "Agency FB";
-  font-size: 16px;
-  text-decoration: none;
-  color: #f5f5f5;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #1a1a1a;
-  border: 1px solid #444;
-  transition: all 0.2s ease;
-}
+        .nav-links a:hover {
+            background: #ffffff;
+            color: #000000;
+        }
 
-.nav-links a:hover,
-.nav-links a.active {
-  background: #ffffff;
-  color: #000000;
-}
+        .nav-links a.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
 
-/* CONTENT-FELD – hellgrau */
-.content-card {
-  background: #2a2a2a;
-  border-radius: 24px;
-  padding: 24px 26px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-  width: 100%;
-}
+        .content-card {
+            background: #181818;
+            border-radius: 24px;
+            padding: 24px 26px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+            width: 100%;
+        }
 
-h1 {
-  font-family: "Agency FB";
-  font-size: 40px;
-  margin-bottom: 10px;
-  text-align: center;
-}
+        h1 {
+            font-family: "Bauhaus 93";
+            font-size: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-.chat-title {
-  text-align: center;
-  font-family: "Agency FB";
-  font-size: 22px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
+        .chat-title {
+            text-align: center;
+            font-family: "Agency FB";
+            font-size: 22px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
 
-.chat-box {
-  background: #2f2f2f;
-  padding: 20px;
-  border-radius: 18px;
-  height: 420px;
-  overflow-y: auto;
-  border: 1px solid #444;
-}
+        .chat-box {
+            background: #202020;
+            padding: 20px;
+            border-radius: 18px;
+            height: 420px;
+            overflow-y: auto;
+            border: 1px solid #2a2a2a;
+        }
 
-.msg {
-  margin-bottom: 14px;
-  line-height: 1.6;
-}
+        .msg {
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
 
-.msg.user { color: #4da3ff; }
-.msg.bot { color: #ffffff; }
+        .msg.user { 
+            color: #4da3ff; 
+        }
 
-.chat-input {
-  margin-top: 14px;
-  display: flex;
-  gap: 10px;
-}
+        .msg.bot { 
+            color: #ffffff; 
+        }
 
-.chat-input input {
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid #333333;
-  background: #101010;
-  color: #ffffff;
-}
+        .chat-input {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+        }
 
-.chat-input button {
-  padding: 10px 18px;
-  border-radius: 999px;
-  border: none;
-  background: #ffffff;
-  color: #000000;
-  font-family: "Agency FB";
-  cursor: pointer;
-}
+        .chat-input input {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid #333333;
+            background: #101010;
+            color: #ffffff;
+        }
 
-.chat-input button:hover {
-  background: #e5e5e5;
-}
-</style>
+        .chat-input button {
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: #ffffff;
+            color: #000000;
+            font-family: "Agency FB";
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background: #e5e5e5;
+        }
+    </style>
 </head>
 
 <body>
-<div class="page-wrapper">
+    <div class="page-wrapper">
 
-<header class="nav-bar">
-  <div class="logo">KI-Projekt</div>
-  <nav class="nav-links">
-    <a href="index.html">Startseite</a>
-    <a href="umfrage.html">Umfrage</a>
-    <a href="potenzial-ki.html">Potenzial KI</a>
-    <a href="auswirkungen-ki.html">Auswirkungen KI</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="chatbot.html" class="active">Chatbot</a>
-    <a href="quellen.html">Quellen</a>
-  </nav>
-</header>
+        <!-- NAVIGATION -->
+        <header class="nav-bar">
+            <div class="logo">KI-Projekt</div>
 
-<main class="content-card">
+            <nav class="nav-links">
+                <a href="index.html">Startseite</a>
+                <a href="umfrage.html">Umfrage</a>
+                <a href="potenzial-ki.html">Potenzial KI</a>
+                <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="chatbot.html" class="active">Chatbot</a>
+                <a href="quellen.html">Quellen</a>
+            </nav>
+        </header>
 
-<h1>Chatbot</h1>
-<div class="chat-title">Frag unseren ChatBot irgendeine Frage zum Thema KI.</div>
+        <main class="content-card">
+            <h1>Chatbot</h1>
 
-<div class="chat-box" id="chatBox">
-  <div class="msg bot">Hallo! Ich bin dein KI‑Chatbot. Stell mir eine Frage rund um das Thema Künstliche Intelligenz.</div>
-</div>
+            <div class="chat-title">Frag unseren ChatBot irgendeine Frage zum Thema KI.</div>
 
-<div class="chat-input">
-  <input id="userInput" type="text" placeholder="Schreibe deine Frage...">
-  <button onclick="sendMessage()">Senden</button>
-</div>
+            <div class="chat-box" id="chatBox">
+                <div class="msg bot">Hallo! Ich bin dein KI‑Chatbot. Stell mir eine Frage rund um das Thema Künstliche Intelligenz.</div>
+            </div>
 
-</main>
-</div>
+            <div class="chat-input">
+                <input id="userInput" type="text" placeholder="Schreibe deine Frage...">
+                <button onclick="sendMessage()">Senden</button>
+            </div>
+        </main>
 
-<script>
-function botReply(message) {
-  const msg = message.toLowerCase();
+    </div>
 
-  if (msg.includes("was ist ki") || msg.includes("definition")) {
-    return "Künstliche Intelligenz bezeichnet Systeme, die Aufgaben lösen können, die normalerweise menschliche Intelligenz erfordern – etwa Muster erkennen, Sprache verstehen oder Entscheidungen treffen.";
-  }
+    <script>
+        /* --- KI‑Chatbot Logik (verbessert) --- */
 
-  if (msg.includes("potenzial")) {
-    return "KI bietet großes Potenzial in Medizin, Forschung, Automatisierung, Bildung und Datenanalyse. Viele Personen in der Umfrage sehen KI positiv oder neutral.";
-  }
+        function botReply(message) {
+            const msg = message.toLowerCase();
 
-  if (msg.includes("ökologisch") || msg.includes("umwelt") || msg.includes("co2") || msg.includes("strom")) {
-    return "Große KI‑Modelle benötigen viel Energie und Wasser, da Rechenzentren enorme Mengen an Strom verbrauchen. Das ist einer der wichtigsten Kritikpunkte an moderner KI.";
-  }
+            /* --- 1) Antworten basierend auf der Website --- */
 
-  if (msg.includes("nutzen") || msg.includes("anwendung") || msg.includes("wofür")) {
-    return "KI wird in vielen Bereichen eingesetzt: Suchmaschinen, Navigation, Medizin, Bild‑ und Spracherkennung, Chatbots, Streaming‑Empfehlungen und mehr.";
-  }
+            if (msg.includes("was ist ki") || msg.includes("definition")) {
+                return "Künstliche Intelligenz bezeichnet Systeme, die Aufgaben lösen können, die normalerweise menschliche Intelligenz erfordern – etwa Muster erkennen, Sprache verstehen oder Entscheidungen treffen.";
+            }
 
-  if (msg.includes("risiko") || msg.includes("gefahr") || msg.includes("angst")) {
-    return "Zu den Risiken gehören Fehlinformationen, Datenschutzprobleme, Energieverbrauch und mögliche Abhängigkeit. Ein verantwortungsvoller Umgang ist wichtig.";
-  }
+            if (msg.includes("potenzial")) {
+                return "KI bietet großes Potenzial in Medizin, Forschung, Automatisierung, Bildung und Datenanalyse. Viele Personen in der Umfrage sehen KI positiv oder neutral.";
+            }
 
-  if (msg.includes("umfrage")) {
-    return "Laut der Umfrage nutzen viele Menschen KI mehrmals pro Woche und stehen ihr überwiegend neutral oder positiv gegenüber.";
-  }
+            if (msg.includes("ökologisch") || msg.includes("umwelt") || msg.includes("co2") || msg.includes("strom")) {
+                return "Große KI‑Modelle benötigen viel Energie und Wasser, da Rechenzentren enorme Mengen an Strom verbrauchen. Das ist einer der wichtigsten Kritikpunkte an moderner KI.";
+            }
 
-  const kiKeywords = [
-    "ki", "künstliche", "intelligenz", "algorithmus", "algorithmen",
-    "modell", "modelle", "daten", "training", "maschine", "neuronales",
-    "chatbot", "chatbots", "deep learning", "machine learning"
-  ];
+            if (msg.includes("nutzen") || msg.includes("anwendung") || msg.includes("wofür")) {
+                return "KI wird in vielen Bereichen eingesetzt: Suchmaschinen, Navigation, Medizin, Bild‑ und Spracherkennung, Chatbots, Streaming‑Empfehlungen und mehr.";
+            }
 
-  const isGeneralKI = kiKeywords.some(k => msg.includes(k));
+            if (msg.includes("risiko") || msg.includes("gefahr") || msg.includes("angst")) {
+                return "Zu den Risiken gehören Fehlinformationen, Datenschutzprobleme, Energieverbrauch und mögliche Abhängigkeit. Ein verantwortungsvoller Umgang ist wichtig.";
+            }
 
-  if (isGeneralKI) {
-    return "Das gehört zwar nicht direkt zu den Inhalten der Website, aber es ist eine sinnvolle Frage zum Thema KI. Kurz gesagt: Moderne KI basiert auf großen Datenmengen, mathematischen Modellen und Trainingsprozessen, die Muster erkennen und Vorhersagen treffen können.";
-  }
+            if (msg.includes("umfrage")) {
+                return "Laut der Umfrage nutzen viele Menschen KI mehrmals pro Woche und stehen ihr überwiegend neutral oder positiv gegenüber.";
+            }
 
-  return "Diese Frage gehört nicht zum Thema Künstliche Intelligenz oder kann nicht sinnvoll beantwortet werden.";
-}
+            /* --- 2) Allgemeine KI‑Fragen (nicht auf der Website, aber thematisch korrekt) --- */
 
-function sendMessage() {
-  const input = document.getElementById("userInput");
-  const chatBox = document.getElementById("chatBox");
-  const text = input.value.trim();
-  if (text === "") return;
+            const kiKeywords = [
+                "ki", "künstliche", "intelligenz", "algorithmus", "algorithmen",
+                "modell", "modelle", "daten", "training", "maschine", "neuronales",
+                "chatbot", "chatbots", "deep learning", "machine learning"
+            ];
 
-  chatBox.innerHTML += `<div class="msg user"><strong>Du:</strong> ${text}</div>`;
-  const reply = botReply(text);
-  chatBox.innerHTML += `<div class="msg bot"><strong>Bot:</strong> ${reply}</div>`;
-  chatBox.scrollTop = chatBox.scrollHeight;
-  input.value = "";
-}
-</script>
+            const isGeneralKI = kiKeywords.some(k => msg.includes(k));
+
+            if (isGeneralKI) {
+                return "Das gehört zwar nicht direkt zu den Inhalten der Website, aber es ist eine sinnvolle Frage zum Thema KI. Kurz gesagt: Moderne KI basiert auf großen Datenmengen, mathematischen Modellen und Trainingsprozessen, die Muster erkennen und Vorhersagen treffen können.";
+            }
+
+            /* --- 3) Off‑Topic --- */
+            return "Diese Frage gehört nicht zum Thema Künstliche Intelligenz oder kann nicht sinnvoll beantwortet werden.";
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const chatBox = document.getElementById("chatBox");
+            const text = input.value.trim();
+
+            if (text === "") return;
+
+            /* Nutzer-Nachricht anzeigen */
+            chatBox.innerHTML += `<div class="msg user"><strong>Du:</strong> ${text}</div>`;
+
+            /* Bot-Antwort */
+            const reply = botReply(text);
+            chatBox.innerHTML += `<div class="msg bot"><strong>Bot:</strong> ${reply}</div>`;
+
+            /* Scroll nach unten */
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            /* Eingabe leeren */
+            input.value = "";
+        }
+    </script>
 
 </body>
 </html>
