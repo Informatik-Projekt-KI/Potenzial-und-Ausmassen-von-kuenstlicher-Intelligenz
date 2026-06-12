@@ -1,275 +1,276 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Potenzial KI – KI-Projekt</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <title>Potenzial KI – KI-Projekt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    <style>
+        body { 
+            background:#000; 
+            color:#fff; 
+            font-family:Arial; 
+            padding:20px; 
+            display:flex; 
+            justify-content:center; 
+        }
 
-body {
-  background:#000;
-  color:#fff;
-  font-family:Arial, sans-serif;
-  padding:20px;
-  display:flex;
-  justify-content:center;
+        .page-wrapper { 
+            width:100%; 
+            max-width:1100px; 
+        }
 
-  /* Tech-Hintergrund */
-  background-image:
-    radial-gradient(circle at top left, rgba(88,101,242,0.35), transparent 55%),
-    radial-gradient(circle at top right, rgba(155,89,182,0.35), transparent 55%),
-    radial-gradient(circle at bottom left, rgba(52,152,219,0.35), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(142,68,173,0.35), transparent 55%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 4px);
-  background-attachment: fixed;
-  background-size: cover;
-}
+        .nav-bar {
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center;
+            background:#111; 
+            padding:10px 20px; 
+            border-radius:18px;
+            margin-bottom:20px; 
+            box-shadow:0 10px 30px rgba(0,0,0,0.6);
+        }
 
-.page-wrapper { width:100%; max-width:1100px; }
+        .logo { 
+            font-family:"Bauhaus 93"; 
+            font-size:26px; 
+        }
 
-/* NAVIGATION – hellgrau */
-.nav-bar {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#2a2a2a;
-  padding:10px 20px;
-  border-radius:18px;
-  margin-bottom:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
+        .nav-links { 
+            display:flex; 
+            gap:14px; 
+        }
 
-.logo {
-  font-family:"Agency FB";
-  font-size:26px;
-  letter-spacing:1px;
-}
+        .nav-links a {
+            font-family:"Agency FB"; 
+            font-size:16px; 
+            text-decoration:none;
+            color:#fff; 
+            padding:8px 14px; 
+            border-radius:999px;
+            background:#1a1a1a; 
+            border:1px solid #2a2a2a;
+        }
 
-.nav-links { display:flex; gap:14px; }
+        .nav-links a.active, 
+        .nav-links a:hover { 
+            background:#fff; 
+            color:#000; 
+        }
 
-.nav-links a {
-  font-family:"Agency FB";
-  font-size:16px;
-  text-decoration:none;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#1a1a1a;
-  border:1px solid #444;
-}
+        .content-card { 
+            background:#181818; 
+            padding:30px; 
+            border-radius:24px; 
+            box-shadow:0 18px 40px rgba(0,0,0,0.7); 
+        }
 
-.nav-links a:hover,
-.nav-links a.active {
-  background:#fff;
-  color:#000;
-}
+        h1,h2 { 
+            text-align:center; 
+            font-family:"Agency FB"; 
+            letter-spacing:1px; 
+        }
 
-/* CONTENT-FELDER – hellgrau */
-.content-card {
-  background:#2a2a2a;
-  padding:30px;
-  border-radius:24px;
-  box-shadow:0 18px 40px rgba(0,0,0,0.7);
-}
+        h1 { 
+            font-size:40px; 
+            margin-bottom:20px; 
+        }
 
-.question-box {
-  background:#2f2f2f;
-  padding:20px;
-  border-radius:18px;
-  margin-bottom:30px;
-}
+        h2 { 
+            font-size:28px; 
+            margin-top:40px; 
+            margin-bottom:10px; 
+        }
 
-h1, h2 {
-  text-align:center;
-  font-family:"Agency FB";
-  letter-spacing:1px;
-}
+        p { 
+            font-size:17px; 
+            line-height:1.7; 
+            margin-bottom:10px; 
+        }
 
-h1 { font-size:40px; margin-bottom:20px; }
-h2 { font-size:28px; margin-top:40px; margin-bottom:10px; }
+        .question-box { 
+            background:#202020; 
+            padding:20px; 
+            border-radius:18px; 
+            margin-bottom:30px; 
+        }
 
-p {
-  font-size:17px;
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-canvas { margin-top:20px; }
-</style>
+        canvas { 
+            margin-top:20px; 
+        }
+    </style>
 </head>
 
 <body>
-<div class="page-wrapper">
+    <div class="page-wrapper">
 
-<header class="nav-bar">
-  <div class="logo">KI-Projekt</div>
-  <nav class="nav-links">
-    <a href="index.html">Startseite</a>
-    <a href="umfrage.html">Umfrage</a>
-    <a href="potenzial-ki.html" class="active">Potenzial KI</a>
-    <a href="auswirkungen-ki.html">Auswirkungen KI</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="chatbot.html">Chatbot</a>
-    <a href="quellen.html">Quellen</a>
-  </nav>
-</header>
+        <!-- NAVIGATION -->
+        <header class="nav-bar">
+            <div class="logo">KI-Projekt</div>
 
-<main class="content-card">
+            <nav class="nav-links">
+                <a href="index.html">Startseite</a>
+                <a href="umfrage.html">Umfrage</a>
+                <a href="potenzial-ki.html" class="active">Potenzial KI</a>
+                <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="chatbot.html">Chatbot</a>
+                <a href="quellen.html">Quellen</a>
+            </nav>
+        </header>
 
-<h1>Potenzial von Künstlicher Intelligenz</h1>
+        <main class="content-card">
 
-<div class="question-box">
-<p>
-Die folgenden Diagramme stellen Schlussfolgerungen aus unserer Umfrage dar.
-Dabei ist wichtig zu beachten, dass die Stichprobe nicht ausgewogen war:
-Ein Großteil der Teilnehmenden war zwischen 12 und 20 Jahren alt und überwiegend weiblich.
-Dadurch können bestimmte Trends stärker erscheinen, als sie in einer neutralen, gleichmäßig verteilten Stichprobe wären.
-Die Diagramme zeigen daher vor allem die Einstellungen und das Nutzungsverhalten dieser jungen Zielgruppe.
-</p>
-</div>
+            <h1>Potenzial von Künstlicher Intelligenz</h1>
 
-<!-- DIAGRAMM 1 -->
-<div class="question-box">
-<h2>Beziehung zu KI nach Geschlecht</h2>
-<canvas id="d1"></canvas>
-<p>
-Das Diagramm zeigt, dass Frauen am häufigsten eine neutrale Haltung zu KI haben.
-Männer sehen dagegen häufiger das Potenzial von KI.
-Über alle Geschlechter hinweg ist die Angst vor KI eher gering.
-Insgesamt zeigt sich eine überwiegend offene Haltung gegenüber KI.
-</p>
-</div>
+            <!-- EINLEITUNG -->
+            <div class="question-box">
+                <p>
+                    Die folgenden Diagramme stellen Schlussfolgerungen aus unserer Umfrage dar.
+                    Dabei ist wichtig zu beachten, dass die Stichprobe nicht ausgewogen war:
+                    Ein Großteil der Teilnehmenden war zwischen 12 und 20 Jahren alt und überwiegend weiblich.
+                    Dadurch können bestimmte Trends stärker erscheinen, als sie in einer neutralen, 
+                    gleichmäßig verteilten Stichprobe wären.
+                    Die Diagramme zeigen daher vor allem die Einstellungen und das Nutzungsverhalten 
+                    dieser jungen Zielgruppe.
+                </p>
+            </div>
 
-<!-- DIAGRAMM 2 -->
-<div class="question-box">
-<h2>Nutzungsfrequenz nach Geschlecht</h2>
-<canvas id="d2"></canvas>
-<p>
-Die meisten Frauen nutzen KI mehrmals in der Woche.
-Männer verwenden KI häufiger mehrmals am Tag.
-In der Gruppe Divers sind die Nutzungswerte über mehrere Kategorien hinweg ähnlich verteilt.
-Insgesamt zeigt sich, dass KI in allen Gruppen regelmäßig genutzt wird.
-</p>
-</div>
+            <!-- DIAGRAMM 1 -->
+            <div class="question-box">
+                <h2>Beziehung zu KI nach Geschlecht</h2>
+                <canvas id="d1"></canvas>
+                <p>
+                    Das Diagramm zeigt, dass Frauen am häufigsten eine neutrale Haltung zu KI haben. 
+                    Männer sehen dagegen häufiger das Potenzial von KI. Über alle Geschlechter hinweg 
+                    ist die Angst vor KI eher gering. Insgesamt zeigt sich eine überwiegend offene 
+                    Haltung gegenüber KI.
+                </p>
+            </div>
 
-<!-- DIAGRAMM 3 -->
-<div class="question-box">
-<h2>Allgemeine Nutzungshäufigkeit</h2>
-<canvas id="d3"></canvas>
-<p>
-Viele Menschen nutzen KI ziemlich häufig.
-Rund sechzig Personen verwenden KI mehrmals in der Woche.
-Etwa vierzig Menschen nutzen KI sogar mehrmals am Tag.
-Das zeigt, dass KI für viele ein fester Bestandteil des Alltags ist.
-</p>
-</div>
+            <!-- DIAGRAMM 2 -->
+            <div class="question-box">
+                <h2>Nutzungsfrequenz nach Geschlecht</h2>
+                <canvas id="d2"></canvas>
+                <p>
+                    Die meisten Frauen nutzen KI mehrmals in der Woche. Männer verwenden KI häufiger 
+                    mehrmals am Tag. In der Gruppe Divers sind die Nutzungswerte über mehrere Kategorien 
+                    hinweg ähnlich verteilt. Insgesamt zeigt sich, dass KI in allen Gruppen regelmäßig 
+                    genutzt wird.
+                </p>
+            </div>
 
-<!-- DIAGRAMM 4 -->
-<div class="question-box">
-<h2>Nutzungshäufigkeit nach Altersgruppen</h2>
-<canvas id="d4"></canvas>
-<p>
-Die jüngste Altersgruppe nutzt KI mit Abstand am häufigsten.
-Ältere Menschen verwenden KI deutlich seltener.
-Das zeigt einen klaren Generationenunterschied.
-KI ist besonders bei jungen Menschen fest im Alltag verankert.
-</p>
-</div>
+            <!-- DIAGRAMM 3 -->
+            <div class="question-box">
+                <h2>Allgemeine Nutzungshäufigkeit</h2>
+                <canvas id="d3"></canvas>
+                <p>
+                    Viele Menschen nutzen KI ziemlich häufig. Rund sechzig Personen verwenden KI 
+                    mehrmals in der Woche. Etwa vierzig Menschen nutzen KI sogar mehrmals am Tag. 
+                    Das zeigt, dass KI für viele ein fester Bestandteil des Alltags ist.
+                </p>
+            </div>
 
-<!-- DIAGRAMM 5 -->
-<div class="question-box">
-<h2>Beziehung zu KI × Nutzungshäufigkeit</h2>
-<canvas id="d5"></canvas>
-<p>
-Viele Menschen stehen KI neutral gegenüber, andere sehen Potenzial in ihrer Entwicklung.
-Besonders Vielnutzer sehen dieses Potenzial häufiger.
-Angst oder Ablehnung kommen vor, sind aber selten.
-Insgesamt zeigt sich eine überwiegend positive Grundhaltung.
-</p>
-</div>
+            <!-- DIAGRAMM 4 -->
+            <div class="question-box">
+                <h2>Nutzungshäufigkeit nach Altersgruppen</h2>
+                <canvas id="d4"></canvas>
+                <p>
+                    Die jüngste Altersgruppe nutzt KI mit Abstand am häufigsten. Ältere Menschen 
+                    verwenden KI deutlich seltener. Das zeigt einen klaren Generationenunterschied. 
+                    KI ist besonders bei jungen Menschen fest im Alltag verankert.
+                </p>
+            </div>
 
-</main>
-</div>
+            <!-- DIAGRAMM 5 -->
+            <div class="question-box">
+                <h2>Beziehung zu KI × Nutzungshäufigkeit</h2>
+                <canvas id="d5"></canvas>
+                <p>
+                    Viele Menschen stehen KI neutral gegenüber, andere sehen Potenzial in ihrer 
+                    Entwicklung. Besonders Vielnutzer sehen dieses Potenzial häufiger. Angst oder 
+                    Ablehnung kommen vor, sind aber selten. Insgesamt zeigt sich eine überwiegend 
+                    positive Grundhaltung.
+                </p>
+            </div>
 
-<script>
-/* GLOBAL CHART OPTIONS – hellgraue Labels */
-Chart.defaults.color = "#d0d0d0";
+        </main>
+    </div>
 
-/* DIAGRAMM 1 */
-new Chart(document.getElementById("d1"), {
-  type: "bar",
-  data: {
-    labels: ["Weiblich", "Männlich", "Divers"],
-    datasets: [
-      { label: "Neutral", data: [60, 20, 1], backgroundColor: "#f1c40f" },
-      { label: "Potenzial", data: [40, 25, 1], backgroundColor: "#7f8c8d" },
-      { label: "Angst", data: [10, 5, 1], backgroundColor: "#e67e22" },
-      { label: "Gegen KI", data: [5, 3, 0], backgroundColor: "#3498db" }
-    ]
-  },
-  options: { indexAxis: "y", responsive: true }
-});
+    <script>
+        /* DIAGRAMM 1 */
+        new Chart(document.getElementById("d1"), {
+            type: "bar",
+            data: {
+                labels: ["Weiblich", "Männlich", "Divers"],
+                datasets: [
+                    { label: "Neutral", data: [60, 20, 1], backgroundColor: "#f1c40f" },
+                    { label: "Potenzial", data: [40, 25, 1], backgroundColor: "#7f8c8d" },
+                    { label: "Angst", data: [10, 5, 1], backgroundColor: "#e67e22" },
+                    { label: "Gegen KI", data: [5, 3, 0], backgroundColor: "#3498db" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* DIAGRAMM 2 */
-new Chart(document.getElementById("d2"), {
-  type: "bar",
-  data: {
-    labels: ["Weiblich", "Männlich", "Divers"],
-    datasets: [
-      { label: "Stündlich", data: [5, 2, 0], backgroundColor: "#2ecc71" },
-      { label: "Mehrmals/Woche", data: [50, 20, 1], backgroundColor: "#2980b9" },
-      { label: "Mehrmals/Monat", data: [20, 10, 1], backgroundColor: "#f1c40f" },
-      { label: "Mehrmals/Tag", data: [15, 8, 0], backgroundColor: "#7f8c8d" },
-      { label: "Einmal/Monat", data: [5, 3, 0], backgroundColor: "#e67e22" },
-      { label: "Einmal/Woche", data: [30, 15, 1], backgroundColor: "#3498db" }
-    ]
-  },
-  options: { indexAxis: "y", responsive: true }
-});
+        /* DIAGRAMM 2 */
+        new Chart(document.getElementById("d2"), {
+            type: "bar",
+            data: {
+                labels: ["Weiblich", "Männlich", "Divers"],
+                datasets: [
+                    { label: "Stündlich", data: [5, 2, 0], backgroundColor: "#2ecc71" },
+                    { label: "Mehrmals/Woche", data: [50, 20, 1], backgroundColor: "#2980b9" },
+                    { label: "Mehrmals/Monat", data: [20, 10, 1], backgroundColor: "#f1c40f" },
+                    { label: "Mehrmals/Tag", data: [15, 8, 0], backgroundColor: "#7f8c8d" },
+                    { label: "Einmal/Monat", data: [5, 3, 0], backgroundColor: "#e67e22" },
+                    { label: "Einmal/Woche", data: [30, 15, 1], backgroundColor: "#3498db" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* DIAGRAMM 3 */
-new Chart(document.getElementById("d3"), {
-  type: "bar",
-  data: {
-    labels: ["Stündlich", "Mehrmals/Tag", "Mehrmals/Woche", "Einmal/Woche", "Mehrmals/Monat", "Einmal/Monat"],
-    datasets: [
-      { label: "Anzahl", data: [2, 38, 60, 19, 10, 9], backgroundColor: "#4A90E2" }
-    ]
-  },
-  options: { indexAxis: "y", responsive: true }
-});
+        /* DIAGRAMM 3 */
+        new Chart(document.getElementById("d3"), {
+            type: "bar",
+            data: {
+                labels: ["Stündlich", "Mehrmals/Tag", "Mehrmals/Woche", "Einmal/Woche", "Mehrmals/Monat", "Einmal/Monat"],
+                datasets: [
+                    { label: "Anzahl", data: [2, 38, 60, 19, 10, 9], backgroundColor: "#4A90E2" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* DIAGRAMM 4 */
-new Chart(document.getElementById("d4"), {
-  type: "bar",
-  data: {
-    labels: ["12–20", "31–45", "45–60", "60+"],
-    datasets: [
-      { label: "Mehrmals/Woche", data: [58, 2, 1, 0], backgroundColor: "#2980b9" },
-      { label: "Mehrmals/Tag", data: [20, 1, 0, 0], backgroundColor: "#7f8c8d" },
-      { label: "Einmal/Woche", data: [30, 1, 0, 0], backgroundColor: "#3498db" }
-    ]
-  },
-  options: { indexAxis: "y", responsive: true }
-});
+        /* DIAGRAMM 4 */
+        new Chart(document.getElementById("d4"), {
+            type: "bar",
+            data: {
+                labels: ["12–20", "31–45", "45–60", "60+"],
+                datasets: [
+                    { label: "Mehrmals/Woche", data: [58, 2, 1, 0], backgroundColor: "#2980b9" },
+                    { label: "Mehrmals/Tag", data: [20, 1, 0, 0], backgroundColor: "#7f8c8d" },
+                    { label: "Einmal/Woche", data: [30, 1, 0, 0], backgroundColor: "#3498db" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* DIAGRAMM 5 */
-new Chart(document.getElementById("d5"), {
-  type: "bar",
-  data: {
-    labels: ["Neutral", "Potenzial", "Angst", "Gegen KI"],
-    datasets: [
-      { label: "Mehrmals/Woche", data: [40, 35, 5, 2], backgroundColor: "#2980b9" },
-      { label: "Mehrmals/Tag", data: [20, 15, 3, 1], backgroundColor: "#7f8c8d" },
-      { label: "Einmal/Woche", data: [25, 20, 2, 1], backgroundColor: "#3498db" }
-    ]
-  },
-  options: { indexAxis: "y", responsive: true }
-});
-</script>
+        /* DIAGRAMM 5 */
+        new Chart(document.getElementById("d5"), {
+            type: "bar",
+            data: {
+                labels: ["Neutral", "Potenzial", "Angst", "Gegen KI"],
+                datasets: [
+                    { label: "Mehrmals/Woche", data: [40, 35, 5, 2], backgroundColor: "#2980b9" },
+                    { label: "Mehrmals/Tag", data: [20, 15, 3, 1], backgroundColor: "#7f8c8d" },
+                    { label: "Einmal/Woche", data: [25, 20, 2, 1], backgroundColor: "#3498db" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
+    </script>
 
 </body>
 </html>
