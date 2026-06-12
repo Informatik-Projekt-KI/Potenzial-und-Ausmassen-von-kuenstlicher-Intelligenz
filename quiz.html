@@ -69,6 +69,7 @@
             padding: 20px;
             border-radius: 18px;
             margin-bottom: 30px;
+            transition: 0.3s;
         }
 
         .question {
@@ -106,6 +107,13 @@
             font-size: 18px;
             display: none;
         }
+
+        .correct {
+            border: 2px solid #2ecc71;
+        }
+        .wrong {
+            border: 2px solid #e74c3c;
+        }
     </style>
 </head>
 
@@ -133,7 +141,7 @@
         <form id="quizForm">
 
             <!-- Frage 1 -->
-            <div class="question-box">
+            <div class="question-box" id="q1box">
                 <div class="question">1. Was versteht man im Kontext der Informatik unter „Künstlicher Intelligenz“?</div>
                 <label><input type="radio" name="q1" value="0"> Die biologische Nachbildung eines menschlichen Gehirns.</label>
                 <label><input type="radio" name="q1" value="1"> Ein System, das menschliche Fähigkeiten wie Lernen und Planen logisch nachbilden kann.</label>
@@ -142,7 +150,7 @@
             </div>
 
             <!-- Frage 2 -->
-            <div class="question-box">
+            <div class="question-box" id="q2box">
                 <div class="question">2. Welche Technologie bildet die Grundlage moderner KI-Systeme?</div>
                 <label><input type="radio" name="q2" value="1"> Maschinelles Lernen und künstliche neuronale Netze</label>
                 <label><input type="radio" name="q2" value="0"> Mechanische Zahnradgetriebe und Lochkarten</label>
@@ -151,16 +159,16 @@
             </div>
 
             <!-- Frage 3 -->
-            <div class="question-box">
+            <div class="question-box" id="q3box">
                 <div class="question">3. Warum wird KI oft kontrovers diskutiert?</div>
+                <label><input type="radio" name="q3" value="1"> Wegen Chancen, aber auch Risiken für Arbeitsmarkt, Datenschutz und Ethik.</label>
                 <label><input type="radio" name="q3" value="0"> Weil KI viel Platz im Wohnzimmer einnimmt.</label>
                 <label><input type="radio" name="q3" value="0"> Weil KI nur von Informatikern genutzt werden kann.</label>
-                <label><input type="radio" name="q3" value="1"> Wegen Chancen, aber auch Risiken für Arbeitsmarkt, Datenschutz und Ethik.</label>
                 <label><input type="radio" name="q3" value="0"> Weil KI weltweit verboten ist.</label>
             </div>
 
             <!-- Frage 4 -->
-            <div class="question-box">
+            <div class="question-box" id="q4box">
                 <div class="question">4. Welcher Umweltfaktor wird bei KI kritisiert?</div>
                 <label><input type="radio" name="q4" value="1"> Der extrem hohe Strom- und Wasserverbrauch von Rechenzentren</label>
                 <label><input type="radio" name="q4" value="0"> Lärmbelästigung durch Smartphones</label>
@@ -169,20 +177,20 @@
             </div>
 
             <!-- Frage 5 -->
-            <div class="question-box">
+            <div class="question-box" id="q5box">
                 <div class="question">5. In welchem Bereich ist KI schon lange integriert?</div>
-                <label><input type="radio" name="q5" value="0"> Analoge Straßenschilder</label>
                 <label><input type="radio" name="q5" value="1"> Empfehlungsalgorithmen von Streaming-Diensten</label>
+                <label><input type="radio" name="q5" value="0"> Analoge Straßenschilder</label>
                 <label><input type="radio" name="q5" value="0"> Mechanische Armbanduhren</label>
                 <label><input type="radio" name="q5" value="0"> Gedruckte Telefonbücher</label>
             </div>
 
             <!-- Frage 6 -->
-            <div class="question-box">
+            <div class="question-box" id="q6box">
                 <div class="question">6. Was bedeutet „Halluzinieren“ bei KI-Modellen?</div>
+                <label><input type="radio" name="q6" value="1"> Die KI erfindet plausible, aber falsche Fakten.</label>
                 <label><input type="radio" name="q6" value="0"> Die KI schaltet sich ab.</label>
                 <label><input type="radio" name="q6" value="0"> Die KI spricht eine neue Sprache.</label>
-                <label><input type="radio" name="q6" value="1"> Die KI erfindet plausible, aber falsche Fakten.</label>
                 <label><input type="radio" name="q6" value="0"> Der Bildschirm flackert bunt.</label>
             </div>
 
@@ -197,27 +205,60 @@
 <script>
 function auswerten() {
     let score = 0;
-    const form = document.getElementById("quizForm");
     const resultBox = document.getElementById("result");
 
+    // Richtige Antworten
+    const correctAnswers = {
+        q1: "1",
+        q2: "1",
+        q3: "1",
+        q4: "1",
+        q5: "1",
+        q6: "1"
+    };
+
+    let wrongList = [];
+
+    // Reset Farben
     for (let i = 1; i <= 6; i++) {
-        const answer = form["q" + i].value;
-        if (answer === "") {
+        document.getElementById("q" + i + "box").classList.remove("correct", "wrong");
+    }
+
+    // Auswertung
+    for (let i = 1; i <= 6; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+
+        if (!selected) {
             alert("Bitte alle Fragen beantworten.");
             return;
         }
-        score += Number(answer);
+
+        if (selected.value === correctAnswers["q" + i]) {
+            score++;
+            document.getElementById("q" + i + "box").classList.add("correct");
+        } else {
+            wrongList.push(i);
+            document.getElementById("q" + i + "box").classList.add("wrong");
+        }
     }
 
+    // Ergebnis anzeigen
     resultBox.style.display = "block";
-    resultBox.innerHTML = `
-        <strong>Dein Ergebnis:</strong><br><br>
-        Du hast <strong>${score} von 6 Punkten</strong> erreicht.<br><br>
-        ${score === 6 ? "Perfekt! Du hast alle Fragen richtig beantwortet." : ""}
-    `;
+
+    if (wrongList.length === 0) {
+        resultBox.innerHTML = `
+            <strong>Perfekt!</strong><br>
+            Du hast alle 6 Fragen richtig beantwortet.
+        `;
+    } else {
+        resultBox.innerHTML = `
+            <strong>Dein Ergebnis:</strong><br><br>
+            Du hast <strong>${score} von 6 Punkten</strong> erreicht.<br><br>
+            <strong>Falsch beantwortet:</strong> Frage(n): ${wrongList.join(", ")}
+        `;
+    }
 }
 </script>
 
 </body>
 </html>
-
