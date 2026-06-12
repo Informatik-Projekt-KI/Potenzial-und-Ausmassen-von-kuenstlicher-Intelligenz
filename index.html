@@ -16,16 +16,13 @@
             color: #ffffff;
             font-family: Arial, sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
             padding: 20px;
         }
 
         .page-wrapper {
             width: 100%;
             max-width: 1100px;
+            margin: 0 auto;
         }
 
         .nav-bar {
@@ -79,11 +76,9 @@
             border-radius: 24px;
             padding: 40px 50px;
             box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-            max-height: calc(100vh - 140px);
-            overflow-y: auto;
+            /* Scroll entfernen → ganze Seite scrollt */
         }
 
-        /* Überschriften zentriert */
         h1, h2, h3 {
             text-align: center;
         }
@@ -110,7 +105,6 @@
             letter-spacing: 1px;
         }
 
-        /* Normaler Text linksbündig */
         p, ul {
             text-align: left;
         }
