@@ -156,46 +156,54 @@
 </div>
 
 <script>
-/* --- KI‑Chatbot Logik (regelbasiert, themenfokussiert) --- */
+/* --- KI‑Chatbot Logik (verbessert) --- */
 
 function botReply(message) {
     const msg = message.toLowerCase();
 
-    /* Antworten basierend auf eurer Website */
+    /* --- 1) Antworten basierend auf der Website --- */
+
     if (msg.includes("was ist ki") || msg.includes("definition")) {
-        return "Künstliche Intelligenz bezeichnet Systeme, die Aufgaben lösen können, die normalerweise menschliche Intelligenz erfordern – z. B. Muster erkennen, Sprache verstehen oder Entscheidungen treffen.";
+        return "Künstliche Intelligenz bezeichnet Systeme, die Aufgaben lösen können, die normalerweise menschliche Intelligenz erfordern – etwa Muster erkennen, Sprache verstehen oder Entscheidungen treffen.";
     }
 
     if (msg.includes("potenzial")) {
-        return "KI bietet großes Potenzial in Bereichen wie Medizin, Forschung, Automatisierung, Bildung und Datenanalyse. Viele Teilnehmende eurer Umfrage sehen KI positiv.";
+        return "KI bietet großes Potenzial in Medizin, Forschung, Automatisierung, Bildung und Datenanalyse. Viele Personen in der Umfrage sehen KI positiv oder neutral.";
     }
 
-    if (msg.includes("ökologisch") || msg.includes("umwelt") || msg.includes("co2")) {
-        return "KI verbraucht viel Energie, besonders große Modelle und Rechenzentren. Laut IEA könnte sich der Energieverbrauch bis 2030 verdreifachen.";
+    if (msg.includes("ökologisch") || msg.includes("umwelt") || msg.includes("co2") || msg.includes("strom")) {
+        return "Große KI‑Modelle benötigen viel Energie und Wasser, da Rechenzentren enorme Mengen an Strom verbrauchen. Das ist einer der wichtigsten Kritikpunkte an moderner KI.";
     }
 
-    if (msg.includes("nutzen") || msg.includes("anwendung")) {
-        return "KI wird bereits in Smart‑Home‑Geräten, Suchmaschinen, Chatbots, Medizin, Navigation, Bild‑ und Videoanalyse und vielen weiteren Bereichen eingesetzt.";
+    if (msg.includes("nutzen") || msg.includes("anwendung") || msg.includes("wofür")) {
+        return "KI wird in vielen Bereichen eingesetzt: Suchmaschinen, Navigation, Medizin, Bild‑ und Spracherkennung, Chatbots, Streaming‑Empfehlungen und mehr.";
     }
 
-    if (msg.includes("gefahr") || msg.includes("risiko") || msg.includes("angst")) {
-        return "Zu den Risiken gehören Fehlinformationen, Datenschutzprobleme, Energieverbrauch und mögliche Abhängigkeit. Wichtig ist ein verantwortungsvoller Umgang.";
+    if (msg.includes("risiko") || msg.includes("gefahr") || msg.includes("angst")) {
+        return "Zu den Risiken gehören Fehlinformationen, Datenschutzprobleme, Energieverbrauch und mögliche Abhängigkeit. Ein verantwortungsvoller Umgang ist wichtig.";
     }
 
     if (msg.includes("umfrage")) {
-        return "In eurer Umfrage nutzen die meisten KI mehrmals pro Woche und stehen ihr überwiegend neutral oder positiv gegenüber.";
+        return "Laut der Umfrage nutzen viele Menschen KI mehrmals pro Woche und stehen ihr überwiegend neutral oder positiv gegenüber.";
     }
 
-    /* Off‑Topic Erkennung */
-    const kiKeywords = ["ki", "künstliche", "intelligenz", "algorithmus", "daten", "maschine", "chatbot"];
-    const isOnTopic = kiKeywords.some(k => msg.includes(k));
+    /* --- 2) Allgemeine KI‑Fragen (nicht auf der Website, aber thematisch korrekt) --- */
 
-    if (!isOnTopic) {
-        return "Diese Frage gehört nicht zum Thema Künstliche Intelligenz oder kann nicht mit den Informationen eurer Website beantwortet werden.";
+    const kiKeywords = [
+        "ki", "künstliche", "intelligenz", "algorithmus", "algorithmen",
+        "modell", "modelle", "daten", "training", "maschine", "neuronales",
+        "chatbot", "chatbots", "deep learning", "machine learning"
+    ];
+
+    const isGeneralKI = kiKeywords.some(k => msg.includes(k));
+
+    if (isGeneralKI) {
+        return "Das gehört zwar nicht direkt zu den Inhalten der Website, aber es ist eine sinnvolle Frage zum Thema KI. Kurz gesagt: " +
+               "Moderne KI basiert auf großen Datenmengen, mathematischen Modellen und Trainingsprozessen, die Muster erkennen und Vorhersagen treffen können.";
     }
 
-    /* Fallback */
-    return "Dazu habe ich leider keine spezifischen Informationen auf eurer Website gefunden, aber es gehört zum Thema KI.";
+    /* --- 3) Off‑Topic --- */
+    return "Diese Frage gehört nicht zum Thema Künstliche Intelligenz oder kann nicht sinnvoll beantwortet werden.";
 }
 
 function sendMessage() {
@@ -222,4 +230,3 @@ function sendMessage() {
 
 </body>
 </html>
-
