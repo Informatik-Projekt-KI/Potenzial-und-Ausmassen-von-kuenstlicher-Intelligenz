@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Chatbot – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -29,7 +30,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
         .logo {
-            font-family: "Bauhaus 93", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Bauhaus 93";
             font-size: 26px;
             letter-spacing: 1px;
         }
@@ -39,7 +40,7 @@
             flex-wrap: wrap;
         }
         .nav-links a {
-            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Agency FB";
             font-size: 16px;
             text-decoration: none;
             color: #f5f5f5;
@@ -63,33 +64,35 @@
             border-radius: 24px;
             padding: 24px 26px;
             box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-            max-height: calc(100vh - 140px);
-            overflow-y: auto;
+            width: 100%;
         }
         h1 {
-            font-family: "Bauhaus 93", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Bauhaus 93";
             font-size: 40px;
             margin-bottom: 10px;
+            text-align: center;
         }
-        h2 {
-            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            letter-spacing: 1px;
-            margin-top: 18px;
-            margin-bottom: 6px;
+        .chat-title {
+            text-align: center;
+            font-family: "Agency FB";
+            font-size: 22px;
+            margin-bottom: 20px;
+            margin-top: 10px;
         }
-        p {
-            line-height: 1.6;
-            margin-bottom: 10px;
-            font-size: 15px;
-        }
-        .chat-placeholder {
-            margin-top: 16px;
-            padding: 16px;
-            border-radius: 18px;
+        .chat-box {
             background: #202020;
+            padding: 20px;
+            border-radius: 18px;
+            height: 420px;
+            overflow-y: auto;
             border: 1px solid #2a2a2a;
-            opacity: 0.9;
         }
+        .msg {
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+        .msg.user { color: #4da3ff; }
+        .msg.bot { color: #ffffff; }
         .chat-input {
             margin-top: 14px;
             display: flex;
@@ -109,7 +112,7 @@
             border: none;
             background: #ffffff;
             color: #000000;
-            font-family: "Agency FB", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Agency FB";
             cursor: pointer;
         }
         .chat-input button:hover {
@@ -117,8 +120,11 @@
         }
     </style>
 </head>
+
 <body>
 <div class="page-wrapper">
+
+    <!-- NAVIGATION -->
     <header class="nav-bar">
         <div class="logo">KI-Projekt</div>
         <nav class="nav-links">
@@ -133,23 +139,87 @@
     </header>
 
     <main class="content-card">
-        <h1>Chatbot</h1>
-        <h2>Interaktiver KI-Chat (Platzhalter)</h2>
-        <p>
-            Hier kannst du später einen echten Chatbot einbinden (z.B. über ein Script oder einen externen Dienst).
-            Im Moment ist dies nur ein Design-Platzhalter.
-        </p>
 
-        <div class="chat-placeholder">
-            <p><strong>Bot:</strong> Hallo! Stell mir eine Frage zu Künstlicher Intelligenz.</p>
-            <p><strong>Du:</strong> (Deine Nachricht erscheint hier...)</p>
+        <h1>Chatbot</h1>
+        <div class="chat-title">Frag unseren ChatBot irgendeine Frage zum Thema KI.</div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="msg bot">Hallo! Ich bin dein KI‑Chatbot. Stell mir eine Frage rund um das Thema Künstliche Intelligenz.</div>
         </div>
 
         <div class="chat-input">
-            <input type="text" placeholder="Schreibe deine Frage...">
-            <button>Senden</button>
+            <input id="userInput" type="text" placeholder="Schreibe deine Frage...">
+            <button onclick="sendMessage()">Senden</button>
         </div>
+
     </main>
 </div>
+
+<script>
+/* --- KI‑Chatbot Logik (regelbasiert, themenfokussiert) --- */
+
+function botReply(message) {
+    const msg = message.toLowerCase();
+
+    /* Antworten basierend auf eurer Website */
+    if (msg.includes("was ist ki") || msg.includes("definition")) {
+        return "Künstliche Intelligenz bezeichnet Systeme, die Aufgaben lösen können, die normalerweise menschliche Intelligenz erfordern – z. B. Muster erkennen, Sprache verstehen oder Entscheidungen treffen.";
+    }
+
+    if (msg.includes("potenzial")) {
+        return "KI bietet großes Potenzial in Bereichen wie Medizin, Forschung, Automatisierung, Bildung und Datenanalyse. Viele Teilnehmende eurer Umfrage sehen KI positiv.";
+    }
+
+    if (msg.includes("ökologisch") || msg.includes("umwelt") || msg.includes("co2")) {
+        return "KI verbraucht viel Energie, besonders große Modelle und Rechenzentren. Laut IEA könnte sich der Energieverbrauch bis 2030 verdreifachen.";
+    }
+
+    if (msg.includes("nutzen") || msg.includes("anwendung")) {
+        return "KI wird bereits in Smart‑Home‑Geräten, Suchmaschinen, Chatbots, Medizin, Navigation, Bild‑ und Videoanalyse und vielen weiteren Bereichen eingesetzt.";
+    }
+
+    if (msg.includes("gefahr") || msg.includes("risiko") || msg.includes("angst")) {
+        return "Zu den Risiken gehören Fehlinformationen, Datenschutzprobleme, Energieverbrauch und mögliche Abhängigkeit. Wichtig ist ein verantwortungsvoller Umgang.";
+    }
+
+    if (msg.includes("umfrage")) {
+        return "In eurer Umfrage nutzen die meisten KI mehrmals pro Woche und stehen ihr überwiegend neutral oder positiv gegenüber.";
+    }
+
+    /* Off‑Topic Erkennung */
+    const kiKeywords = ["ki", "künstliche", "intelligenz", "algorithmus", "daten", "maschine", "chatbot"];
+    const isOnTopic = kiKeywords.some(k => msg.includes(k));
+
+    if (!isOnTopic) {
+        return "Diese Frage gehört nicht zum Thema Künstliche Intelligenz oder kann nicht mit den Informationen eurer Website beantwortet werden.";
+    }
+
+    /* Fallback */
+    return "Dazu habe ich leider keine spezifischen Informationen auf eurer Website gefunden, aber es gehört zum Thema KI.";
+}
+
+function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+    const text = input.value.trim();
+
+    if (text === "") return;
+
+    /* Nutzer-Nachricht anzeigen */
+    chatBox.innerHTML += `<div class="msg user"><strong>Du:</strong> ${text}</div>`;
+
+    /* Bot-Antwort */
+    const reply = botReply(text);
+    chatBox.innerHTML += `<div class="msg bot"><strong>Bot:</strong> ${reply}</div>`;
+
+    /* Scroll nach unten */
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    /* Eingabe leeren */
+    input.value = "";
+}
+</script>
+
 </body>
 </html>
+
