@@ -2,13 +2,26 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Potenzial KI – KI-Projekt</title>
+    <title>Potenzial von KI – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body { background:#000; color:#fff; font-family:Arial; padding:20px; display:flex; justify-content:center; }
         .page-wrapper { width:100%; max-width:1100px; }
+        .nav-bar {
+            display:flex; justify-content:space-between; align-items:center;
+            background:#111; padding:10px 20px; border-radius:18px;
+            margin-bottom:20px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
+        }
+        .logo { font-family:"Bauhaus 93"; font-size:26px; }
+        .nav-links { display:flex; gap:14px; }
+        .nav-links a {
+            font-family:"Agency FB"; font-size:16px; text-decoration:none;
+            color:#fff; padding:8px 14px; border-radius:999px;
+            background:#1a1a1a; border:1px solid #2a2a2a;
+        }
+        .nav-links a.active, .nav-links a:hover { background:#fff; color:#000; }
         .content-card { background:#181818; padding:30px; border-radius:24px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
         h1,h2 { text-align:center; font-family:"Agency FB"; letter-spacing:1px; }
         h1 { font-size:40px; margin-bottom:20px; }
@@ -21,9 +34,24 @@
 
 <body>
 <div class="page-wrapper">
+
+    <!-- NAVIGATION -->
+    <header class="nav-bar">
+        <div class="logo">KI-Projekt</div>
+        <nav class="nav-links">
+            <a href="index.html">Startseite</a>
+            <a href="umfrage.html">Umfrage</a>
+            <a href="potenzial-ki.html" class="active">Potenzial KI</a>
+            <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quellen.html">Quellen</a>
+        </nav>
+    </header>
+
     <main class="content-card">
 
-        <h1>Potenzial von KI</h1>
+        <h1>Potenzial von Künstlicher Intelligenz</h1>
 
         <!-- EINLEITUNG -->
         <div class="question-box">
@@ -38,8 +66,8 @@
 
         <!-- DIAGRAMM 1 -->
         <div class="question-box">
-            <h2>Beziehung zu KI nach Geschlecht</h2>
-            <p>Die meisten weiblichen und männlichen Teilnehmenden stehen KI neutral gegenüber oder sehen Potenzial in ihr.<sup>1</sup></p>
+            <h2>Einstellungen gegenüber KI nach Geschlecht</h2>
+            <p>Die meisten Teilnehmenden stehen KI neutral gegenüber oder sehen Potenzial in ihr.<sup>1</sup></p>
             <p>Regelmäßige Nutzung führt laut Forschung zu höherem Vertrauen in KI‑Systeme.<sup>2,6</sup></p>
             <canvas id="potenzial1"></canvas>
         </div>
@@ -62,7 +90,7 @@
 
         <!-- DIAGRAMM 4 -->
         <div class="question-box">
-            <h2>Nutzungshäufigkeit nach Alter</h2>
+            <h2>Nutzungshäufigkeit nach Altersgruppen</h2>
             <p>Die Altersgruppe 12–20 nutzt KI mit Abstand am häufigsten; ältere Gruppen nutzen KI deutlich seltener.<sup>1</sup></p>
             <p>Jüngere Menschen verwenden KI‑Tools häufiger, da sie digital aufgewachsen sind.<sup>4,5</sup></p>
             <canvas id="potenzial4"></canvas>
@@ -70,9 +98,9 @@
 
         <!-- DIAGRAMM 5 -->
         <div class="question-box">
-            <h2>Beziehung zu KI × Nutzungshäufigkeit</h2>
-            <p>Vielnutzer sehen deutlich häufiger Potenzial in KI, während Wenignutzer häufiger Angst äußern.<sup>1</sup></p>
-            <p>Regelmäßige Nutzung reduziert Unsicherheiten und stärkt Vertrauen in KI‑Systeme.<sup>2</sup></p>
+            <h2>Zusammenhang zwischen Nutzung und Einstellung</h2>
+            <p>Vielnutzer sehen deutlich häufiger Potenzial in KI, während Wenignutzer häufiger Unsicherheiten äußern.<sup>1</sup></p>
+            <p>Regelmäßige Nutzung reduziert laut Forschung Ängste und stärkt Vertrauen.<sup>2</sup></p>
             <canvas id="potenzial5"></canvas>
         </div>
 
@@ -89,6 +117,82 @@
 
     </main>
 </div>
+
+<script>
+/* ====== PIVOT-DIAGRAMME (Chart.js) ====== */
+
+/* Diagramm 1 */
+new Chart(document.getElementById("potenzial1"), {
+    type: "bar",
+    data: {
+        labels: ["Weiblich", "Männlich", "Divers"],
+        datasets: [
+            { label: "Neutral", data: [60, 20, 1], backgroundColor: "#f1c40f" },
+            { label: "Potenzial", data: [40, 25, 1], backgroundColor: "#7f8c8d" },
+            { label: "Angst", data: [10, 5, 1], backgroundColor: "#e67e22" },
+            { label: "Gegen KI", data: [5, 3, 0], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+
+/* Diagramm 2 */
+new Chart(document.getElementById("potenzial2"), {
+    type: "bar",
+    data: {
+        labels: ["Weiblich", "Männlich", "Divers"],
+        datasets: [
+            { label: "Stündlich", data: [5, 2, 0], backgroundColor: "#2ecc71" },
+            { label: "Mehrmals/Woche", data: [50, 20, 1], backgroundColor: "#2980b9" },
+            { label: "Mehrmals/Monat", data: [20, 10, 1], backgroundColor: "#f1c40f" },
+            { label: "Mehrmals/Tag", data: [15, 8, 0], backgroundColor: "#7f8c8d" },
+            { label: "Einmal/Monat", data: [5, 3, 0], backgroundColor: "#e67e22" },
+            { label: "Einmal/Woche", data: [30, 15, 1], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+
+/* Diagramm 3 */
+new Chart(document.getElementById("potenzial3"), {
+    type: "bar",
+    data: {
+        labels: ["Stündlich", "Mehrmals/Tag", "Mehrmals/Woche", "Einmal/Woche", "Mehrmals/Monat", "Einmal/Monat"],
+        datasets: [
+            { label: "Anzahl", data: [2, 38, 60, 19, 10, 9], backgroundColor: "#4A90E2" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+
+/* Diagramm 4 */
+new Chart(document.getElementById("potenzial4"), {
+    type: "bar",
+    data: {
+        labels: ["12–20", "31–45", "45–60", "60+"],
+        datasets: [
+            { label: "Mehrmals/Woche", data: [58, 2, 1, 0], backgroundColor: "#2980b9" },
+            { label: "Mehrmals/Tag", data: [20, 1, 0, 0], backgroundColor: "#7f8c8d" },
+            { label: "Einmal/Woche", data: [30, 1, 0, 0], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+
+/* Diagramm 5 */
+new Chart(document.getElementById("potenzial5"), {
+    type: "bar",
+    data: {
+        labels: ["Neutral", "Potenzial", "Angst", "Gegen KI"],
+        datasets: [
+            { label: "Mehrmals/Woche", data: [40, 35, 5, 2], backgroundColor: "#2980b9" },
+            { label: "Mehrmals/Tag", data: [20, 15, 3, 1], backgroundColor: "#7f8c8d" },
+            { label: "Einmal/Woche", data: [25, 20, 2, 1], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+</script>
+
 </body>
 </html>
-
