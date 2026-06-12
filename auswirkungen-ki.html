@@ -89,7 +89,7 @@
 </div>
 
 <script>
-/* DIAGRAMM 1 */
+/* DIAGRAMM 1 – kleiner Donut */
 new Chart(document.getElementById("e1"), {
     type: "doughnut",
     data: {
@@ -99,7 +99,14 @@ new Chart(document.getElementById("e1"), {
             backgroundColor: ["#3498db", "#e67e22", "#7f8c8d"]
         }]
     },
-    options: { responsive: true }
+    options: { 
+        responsive: true,
+        cutout: "65%",   // Loch größer → Donut kleiner
+        radius: 90,      // Gesamtgröße kleiner
+        plugins: {
+            legend: { labels: { color: "#fff" } }
+        }
+    }
 });
 
 /* DIAGRAMM 2 */
