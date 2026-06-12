@@ -53,6 +53,17 @@
 
         <h1>Ökologische Auswirkungen von KI</h1>
 
+        <!-- EINLEITUNG -->
+        <div class="question-box">
+            <p>
+                Die folgenden Diagramme stellen Schlussfolgerungen aus unserer Umfrage dar. 
+                Dabei ist wichtig zu beachten, dass die Stichprobe nicht ausgewogen war: 
+                Ein Großteil der Teilnehmenden war zwischen 12 und 20 Jahren alt und überwiegend weiblich. 
+                Dadurch können bestimmte Trends stärker erscheinen, als sie in einer neutralen, gleichmäßig verteilten Stichprobe wären. 
+                Die Diagramme zeigen daher vor allem die Einstellungen und das Nutzungsverhalten dieser jungen Zielgruppe.
+            </p>
+        </div>
+
         <!-- DIAGRAMM 1 -->
         <div class="question-box">
             <h2>Wissen über ökologische Auswirkungen</h2>
@@ -114,15 +125,4 @@ new Chart(document.getElementById("e3"), {
         datasets: [
             { label: "Stündlich", data: [1, 0, 1], backgroundColor: "#2ecc71" },
             { label: "Mehrmals/Tag", data: [16, 4, 22], backgroundColor: "#7f8c8d" },
-            { label: "Mehrmals/Woche", data: [20, 7, 33], backgroundColor: "#2980b9" },
-            { label: "Einmal/Woche", data: [4, 2, 7], backgroundColor: "#3498db" },
-            { label: "Mehrmals/Monat", data: [1, 1, 1], backgroundColor: "#f1c40f" },
-            { label: "Einmal/Monat", data: [1, 0, 0], backgroundColor: "#e67e22" }
-        ]
-    },
-    options: { indexAxis: "y", responsive: true }
-});
-</script>
-
-</body>
-</html>
+            {
