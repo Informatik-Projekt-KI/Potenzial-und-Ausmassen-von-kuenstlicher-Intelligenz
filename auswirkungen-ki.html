@@ -1,153 +1,45 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Ökologische Auswirkungen von KI – KI-Projekt</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <style>
-        body { background:#000; color:#fff; font-family:Arial; padding:20px; display:flex; justify-content:center; }
-        .page-wrapper { width:100%; max-width:1100px; }
-        .nav-bar {
-            display:flex; justify-content:space-between; align-items:center;
-            background:#111; padding:10px 20px; border-radius:18px;
-            margin-bottom:20px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
-        }
-        .logo { font-family:"Bauhaus 93"; font-size:26px; }
-        .nav-links { display:flex; gap:14px; }
-        .nav-links a {
-            font-family:"Agency FB"; font-size:16px; text-decoration:none;
-            color:#fff; padding:8px 14px; border-radius:999px;
-            background:#1a1a1a; border:1px solid #2a2a2a;
-        }
-        .nav-links a.active, .nav-links a:hover { background:#fff; color:#000; }
-        .content-card { background:#181818; padding:30px; border-radius:24px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
-        h1,h2 { text-align:center; font-family:"Agency FB"; letter-spacing:1px; }
-        h1 { font-size:40px; margin-bottom:20px; }
-        h2 { font-size:28px; margin-top:40px; margin-bottom:10px; }
-        p { font-size:17px; line-height:1.7; margin-bottom:10px; }
-        .question-box { background:#202020; padding:20px; border-radius:18px; margin-bottom:30px; }
-        canvas { margin-top:20px; }
-    </style>
-</head>
-
-<body>
-<div class="page-wrapper">
-
-    <!-- NAVIGATION -->
-    <header class="nav-bar">
-        <div class="logo">KI-Projekt</div>
-        <nav class="nav-links">
-            <a href="index.html">Startseite</a>
-            <a href="umfrage.html">Umfrage</a>
-            <a href="potenzial-ki.html">Potenzial KI</a>
-            <a href="auswirkungen-ki.html" class="active">Auswirkungen KI</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="quellen.html">Quellen</a>
-        </nav>
-    </header>
-
-    <main class="content-card">
-
-        <h1>Ökologische Auswirkungen von Künstlicher Intelligenz</h1>
-
-        <!-- EINLEITUNG -->
-        <div class="question-box">
-            <p>
-                Die folgenden Auswertungen basieren auf unserer eigenen Umfrage mit 138 Teilnehmenden.<sup>1</sup> 
-                Dabei ist wichtig zu beachten, dass die Stichprobe nicht gleichmäßig verteilt ist: 
-                <b>86% der Teilnehmenden sind zwischen 12–20 Jahren alt</b> und der Anteil weiblicher Personen ist deutlich höher.<sup>1</sup> 
-                Dadurch können bestimmte Trends stärker erscheinen, als sie in einer ausgewogenen Gesamtbevölkerung wären. 
-                Die Diagramme zeigen daher vor allem die Einstellungen und das Nutzungsverhalten der jungen Zielgruppe.
-            </p>
-        </div>
-
-        <!-- DIAGRAMM 1 -->
-        <div class="question-box">
-            <h2>Wissen über ökologische Auswirkungen von KI</h2>
-            <p>Die Mehrheit der Teilnehmenden gab an, die ökologischen Auswirkungen von KI zumindest teilweise zu kennen.<sup>1</sup></p>
-            <p>Rechenzentren könnten ihren Energieverbrauch bis 2030 verdreifachen, was erhebliche ökologische Folgen hat.<sup>7</sup></p>
-            <canvas id="auswirkung1"></canvas>
-        </div>
-
-        <!-- DIAGRAMM 2 -->
-        <div class="question-box">
-            <h2>Wissen und Einstellung gegenüber KI</h2>
-            <p>Personen mit höherem Wissen sehen häufiger Potenzial in KI, während geringes Wissen häufiger zu Unsicherheiten führt.<sup>1</sup></p>
-            <p>Wissen reduziert laut Forschung Ängste und führt zu differenzierteren Bewertungen.<sup>2</sup></p>
-            <canvas id="auswirkung2"></canvas>
-        </div>
-
-        <!-- DIAGRAMM 3 -->
-        <div class="question-box">
-            <h2>Wissen und Nutzungshäufigkeit von KI</h2>
-            <p>Personen, die KI gut kennen, nutzen sie häufiger; geringes Wissen führt zu seltener Nutzung.<sup>1</sup></p>
-            <p>Häufige Nutzung erhöht das Bewusstsein für ökologische Belastungen und technische Hintergründe.<sup>5</sup></p>
-            <canvas id="auswirkung3"></canvas>
-        </div>
-
-        <!-- QUELLEN -->
-        <div style="margin-top: 40px; font-size: 14px; line-height: 1.6; opacity: 0.8;">
-            <h3 style="font-family: 'Agency FB'; text-align: center; margin-bottom: 10px;">Quellen</h3>
-            <p><sup>1</sup> Eigene Umfrage (2024).</p>
-            <p><sup>2</sup> Tableau (2024). <i>AI Examples & Use Cases.</i></p>
-            <p><sup>5</sup> SRF (2024). <i>KI‑Tools im Alltag.</i></p>
-            <p><sup>7</sup> Internationale Energieagentur (IEA). <i>Data Centres & Energy.</i></p>
-        </div>
-
-    </main>
+<!-- EINLEITUNG -->
+<div class="question-box">
+    <p>
+        Die Auswertungen basieren auf unserer eigenen Umfrage mit 138 Teilnehmenden.<sup>1</sup> 
+        Da der Großteil der Befragten zwischen 12–20 Jahren alt ist, spiegeln die Ergebnisse vor allem die Perspektive einer jungen Zielgruppe wider.<sup>1</sup> 
+        Diese Altersgruppe nutzt KI besonders intensiv, wodurch das Bewusstsein für ökologische Auswirkungen unterschiedlich ausgeprägt ist.<sup>5</sup> 
+        Die folgenden Diagramme zeigen, wie Wissen, Nutzung und Einstellungen zusammenhängen.
+    </p>
 </div>
 
-<script>
-/* ====== PIVOT-DIAGRAMME (Chart.js) ====== */
+<!-- DIAGRAMM 1 -->
+<div class="question-box">
+    <h2>Wissen über ökologische Auswirkungen von KI</h2>
+    <p>
+        Die Umfrage zeigt, dass viele Teilnehmende nur teilweise wissen, welche ökologischen Folgen KI‑Systeme haben.<sup>1</sup> 
+        Laut IEA‑Berichten 2026 steigt der Energieverbrauch von Rechenzentren weltweit weiter an.<sup>7</sup> 
+        Besonders große KI‑Modelle benötigen enorme Mengen Strom und Kühlleistung.<sup>7</sup> 
+        Forschende betonen, dass fehlendes Wissen oft zu einer Unterschätzung dieser Umweltbelastungen führt.<sup>5</sup>
+    </p>
+    <canvas id="auswirkung1"></canvas>
+</div>
 
-/* Diagramm 1 – Wissen über ökologische Auswirkungen */
-new Chart(document.getElementById("auswirkung1"), {
-    type: "doughnut",
-    data: {
-        labels: ["Ja", "Nein", "Zum Teil"],
-        datasets: [{
-            data: [43, 14, 64],
-            backgroundColor: ["#3498db", "#e67e22", "#7f8c8d"]
-        }]
-    },
-    options: { responsive: true }
-});
+<!-- DIAGRAMM 2 -->
+<div class="question-box">
+    <h2>Wissen und Einstellung gegenüber KI</h2>
+    <p>
+        Die Daten zeigen, dass Personen mit höherem Wissen KI häufiger positiv einschätzen, während geringes Wissen eher zu Unsicherheiten führt.<sup>1</sup> 
+        Studien aus Europa bestätigen, dass informierte Nutzer Risiken realistischer einordnen können.<sup>2</sup> 
+        Gleichzeitig führt Wissen zu einer differenzierteren Bewertung zwischen Nutzen und ökologischen Kosten.<sup>5</sup> 
+        Dieser Zusammenhang bleibt laut Forschung auch 2026 stabil.<sup>7</sup>
+    </p>
+    <canvas id="auswirkung2"></canvas>
+</div>
 
-/* Diagramm 2 – Wissen × Beziehung zu KI */
-new Chart(document.getElementById("auswirkung2"), {
-    type: "bar",
-    data: {
-        labels: ["Ja", "Nein", "Zum Teil"],
-        datasets: [
-            { label: "Neutral", data: [10, 6, 25], backgroundColor: "#f1c40f" },
-            { label: "Potenzial", data: [27, 4, 26], backgroundColor: "#7f8c8d" },
-            { label: "Angst", data: [3, 3, 8], backgroundColor: "#e67e22" },
-            { label: "Gegen KI", data: [3, 1, 5], backgroundColor: "#3498db" }
-        ]
-    },
-    options: { indexAxis: "y", responsive: true }
-});
-
-/* Diagramm 3 – Wissen × Nutzungshäufigkeit */
-new Chart(document.getElementById("auswirkung3"), {
-    type: "bar",
-    data: {
-        labels: ["Ja", "Nein", "Zum Teil"],
-        datasets: [
-            { label: "Stündlich", data: [1, 0, 1], backgroundColor: "#2ecc71" },
-            { label: "Mehrmals/Tag", data: [16, 4, 22], backgroundColor: "#7f8c8d" },
-            { label: "Mehrmals/Woche", data: [20, 7, 33], backgroundColor: "#2980b9" },
-            { label: "Einmal/Woche", data: [4, 2, 7], backgroundColor: "#3498db" },
-            { label: "Mehrmals/Monat", data: [1, 1, 1], backgroundColor: "#f1c40f" },
-            { label: "Einmal/Monat", data: [1, 0, 0], backgroundColor: "#e67e22" }
-        ]
-    },
-    options: { indexAxis: "y", responsive: true }
-});
-</script>
-
-</body>
-</html>
+<!-- DIAGRAMM 3 -->
+<div class="question-box">
+    <h2>Wissen und Nutzungshäufigkeit von KI</h2>
+    <p>
+        Die Ergebnisse zeigen, dass Personen mit gutem Wissen KI häufiger nutzen als jene mit geringem Wissen.<sup>1</sup> 
+        Forschende erklären dies damit, dass Verständnis über Funktionsweise Hemmschwellen reduziert.<sup>5</sup> 
+        Gleichzeitig steigt bei Vielnutzern das Bewusstsein für ökologische Belastungen durch KI‑Systeme.<sup>7</sup> 
+        Dieser Effekt wird 2026 besonders in jüngeren Altersgruppen beobachtet.<sup>2</sup>
+    </p>
+    <canvas id="auswirkung3"></canvas>
+</div>
