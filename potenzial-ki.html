@@ -1,77 +1,169 @@
-<!-- EINLEITUNG -->
-<div class="question-box">
-    <p>
-        Die folgenden Auswertungen basieren auf unserer eigenen Umfrage mit 138 Teilnehmenden.<sup>1</sup> 
-        Da <b>86% der Befragten zwischen 12–20 Jahren alt</b> sind und der Anteil weiblicher Personen überwiegt,<sup>1</sup> 
-        spiegeln die Ergebnisse vor allem die Perspektive einer jungen, digital geprägten Zielgruppe wider. 
-        Studien aus dem Jahr 2026 zeigen, dass diese Altersgruppe KI‑Technologien besonders intensiv nutzt und dadurch ein stärkeres Bewusstsein für Chancen und Risiken entwickelt.<sup>4,6</sup>
-    </p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Potenzial KI – KI-Projekt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <h3 style="font-family: 'Agency FB'; text-align: center; margin: 20px 0 10px;">Quellen</h3>
-    <p><sup>1</sup> Eigene Umfrage (2026).</p>
-    <p><sup>2</sup> Europäische Digitalstudie (2026). KI‑Nutzung & Vertrauen.</p>
-    <p><sup>3</sup> Digital Europe Report (2026). Alltagsnutzung von KI.</p>
-    <p><sup>4</sup> THWS (2026). Anwendungsbereiche der KI.</p>
-    <p><sup>5</sup> SRF Digital (2026). KI‑Tools im Alltag.</p>
-    <p><sup>6</sup> ITPortal (2026). KI im täglichen Gebrauch.</p>
+    <style>
+        body { background:#000; color:#fff; font-family:Arial; padding:20px; display:flex; justify-content:center; }
+        .page-wrapper { width:100%; max-width:1100px; }
+        .nav-bar {
+            display:flex; justify-content:space-between; align-items:center;
+            background:#111; padding:10px 20px; border-radius:18px;
+            margin-bottom:20px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
+        }
+        .logo { font-family:"Bauhaus 93"; font-size:26px; }
+        .nav-links { display:flex; gap:14px; }
+        .nav-links a {
+            font-family:"Agency FB"; font-size:16px; text-decoration:none;
+            color:#fff; padding:8px 14px; border-radius:999px;
+            background:#1a1a1a; border:1px solid #2a2a2a;
+        }
+        .nav-links a.active, .nav-links a:hover { background:#fff; color:#000; }
+        .content-card { background:#181818; padding:30px; border-radius:24px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
+        h1,h2 { text-align:center; font-family:"Agency FB"; letter-spacing:1px; }
+        h1 { font-size:40px; margin-bottom:20px; }
+        h2 { font-size:28px; margin-top:40px; margin-bottom:10px; }
+        p { font-size:17px; line-height:1.7; margin-bottom:10px; }
+        .question-box { background:#202020; padding:20px; border-radius:18px; margin-bottom:30px; }
+        canvas { margin-top:20px; }
+    </style>
+</head>
+
+<body>
+<div class="page-wrapper">
+
+    <!-- NAVIGATION -->
+    <header class="nav-bar">
+        <div class="logo">KI-Projekt</div>
+        <nav class="nav-links">
+            <a href="index.html">Startseite</a>
+            <a href="umfrage.html">Umfrage</a>
+            <a href="potenzial-ki.html" class="active">Potenzial KI</a>
+            <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quellen.html">Quellen</a>
+        </nav>
+    </header>
+
+    <main class="content-card">
+
+        <h1>Potenzial von Künstlicher Intelligenz</h1>
+
+        <!-- DIAGRAMM 1 -->
+        <div class="question-box">
+            <h2>Beziehung zu KI nach Geschlecht</h2>
+            <canvas id="d1"></canvas>
+            <p>Das Diagramm zeigt, dass Frauen am häufigsten eine neutrale Haltung zu KI haben. Männer sehen dagegen häufiger das Potenzial von KI. Über alle Geschlechter hinweg ist die Angst vor KI eher gering. Insgesamt zeigt sich eine überwiegend offene Haltung gegenüber KI.</p>
+        </div>
+
+        <!-- DIAGRAMM 2 -->
+        <div class="question-box">
+            <h2>Nutzungsfrequenz nach Geschlecht</h2>
+            <canvas id="d2"></canvas>
+            <p>Die meisten Frauen nutzen KI mehrmals in der Woche. Männer verwenden KI häufiger mehrmals am Tag. In der Gruppe Divers sind die Nutzungswerte über mehrere Kategorien hinweg ähnlich verteilt. Insgesamt zeigt sich, dass KI in allen Gruppen regelmäßig genutzt wird.</p>
+        </div>
+
+        <!-- DIAGRAMM 3 -->
+        <div class="question-box">
+            <h2>Allgemeine Nutzungshäufigkeit</h2>
+            <canvas id="d3"></canvas>
+            <p>Viele Menschen nutzen KI ziemlich häufig. Rund sechzig Personen verwenden KI mehrmals in der Woche. Etwa vierzig Menschen nutzen KI sogar mehrmals am Tag. Das zeigt, dass KI für viele ein fester Bestandteil des Alltags ist.</p>
+        </div>
+
+        <!-- DIAGRAMM 4 -->
+        <div class="question-box">
+            <h2>Nutzungshäufigkeit nach Altersgruppen</h2>
+            <canvas id="d4"></canvas>
+            <p>Die jüngste Altersgruppe nutzt KI mit Abstand am häufigsten. Ältere Menschen verwenden KI deutlich seltener. Das zeigt einen klaren Generationenunterschied. KI ist besonders bei jungen Menschen fest im Alltag verankert.</p>
+        </div>
+
+        <!-- DIAGRAMM 5 -->
+        <div class="question-box">
+            <h2>Beziehung zu KI × Nutzungshäufigkeit</h2>
+            <canvas id="d5"></canvas>
+            <p>Viele Menschen stehen KI neutral gegenüber, andere sehen Potenzial in ihrer Entwicklung. Besonders Vielnutzer sehen dieses Potenzial häufiger. Angst oder Ablehnung kommen vor, sind aber selten. Insgesamt zeigt sich eine überwiegend positive Grundhaltung.</p>
+        </div>
+
+    </main>
 </div>
 
-<!-- DIAGRAMM 1 -->
-<div class="question-box">
-    <h2>Einstellungen gegenüber KI nach Geschlecht</h2>
-    <p>
-        Die Umfrage zeigt, dass die meisten Teilnehmenden KI neutral oder positiv bewerten, unabhängig vom Geschlecht.<sup>1</sup> 
-        Europäische Studien aus 2026 bestätigen, dass regelmäßige KI‑Nutzung zu einer sachlicheren Einschätzung führt.<sup>2</sup> 
-        Besonders junge Nutzerinnen und Nutzer entwickeln schneller Vertrauen in digitale Systeme.<sup>5</sup> 
-        Forschende sehen diesen Trend als Folge der alltäglichen Präsenz von KI‑gestützten Anwendungen.<sup>6</sup>
-    </p>
-    <canvas id="potenzial1"></canvas>
-</div>
+<script>
+/* DIAGRAMM 1 */
+new Chart(document.getElementById("d1"), {
+    type: "bar",
+    data: {
+        labels: ["Weiblich", "Männlich", "Divers"],
+        datasets: [
+            { label: "Neutral", data: [60, 20, 1], backgroundColor: "#f1c40f" },
+            { label: "Potenzial", data: [40, 25, 1], backgroundColor: "#7f8c8d" },
+            { label: "Angst", data: [10, 5, 1], backgroundColor: "#e67e22" },
+            { label: "Gegen KI", data: [5, 3, 0], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
 
-<!-- DIAGRAMM 2 -->
-<div class="question-box">
-    <h2>Nutzungshäufigkeit nach Geschlecht</h2>
-    <p>
-        Die häufigste Nutzung liegt bei „mehrmals pro Woche“, besonders bei weiblichen Teilnehmenden.<sup>1</sup> 
-        Laut Digital Europe Report 2026 nutzen viele Menschen KI täglich, ohne es bewusst wahrzunehmen.<sup>3</sup> 
-        Dazu gehören Empfehlungssysteme, automatische Filter oder Chat‑Assistenten.<sup>5</sup> 
-        Diese unsichtbare Nutzung erklärt, warum die tatsächliche KI‑Interaktion höher ist als die Selbsteinschätzung vieler Personen.<sup>6</sup>
-    </p>
-    <canvas id="potenzial2"></canvas>
-</div>
+/* DIAGRAMM 2 */
+new Chart(document.getElementById("d2"), {
+    type: "bar",
+    data: {
+        labels: ["Weiblich", "Männlich", "Divers"],
+        datasets: [
+            { label: "Stündlich", data: [5, 2, 0], backgroundColor: "#2ecc71" },
+            { label: "Mehrmals/Woche", data: [50, 20, 1], backgroundColor: "#2980b9" },
+            { label: "Mehrmals/Monat", data: [20, 10, 1], backgroundColor: "#f1c40f" },
+            { label: "Mehrmals/Tag", data: [15, 8, 0], backgroundColor: "#7f8c8d" },
+            { label: "Einmal/Monat", data: [5, 3, 0], backgroundColor: "#e67e22" },
+            { label: "Einmal/Woche", data: [30, 15, 1], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
 
-<!-- DIAGRAMM 3 -->
-<div class="question-box">
-    <h2>Allgemeine Nutzungshäufigkeit</h2>
-    <p>
-        Die häufigste Nutzungsfrequenz ist „mehrmals in der Woche“, gefolgt von „mehrmals am Tag“.<sup>1</sup> 
-        Internationale Studien zeigen, dass KI‑gestützte Dienste 2026 zu den meistgenutzten digitalen Technologien gehören.<sup>2</sup> 
-        Besonders Social‑Media‑Plattformen verstärken die tägliche Interaktion durch algorithmische Inhalte.<sup>5</sup> 
-        Dadurch steigt die Nutzungsintensität selbst bei Personen, die KI nicht aktiv einsetzen.<sup>6</sup>
-    </p>
-    <canvas id="potenzial3"></canvas>
-</div>
+/* DIAGRAMM 3 */
+new Chart(document.getElementById("d3"), {
+    type: "bar",
+    data: {
+        labels: ["Stündlich", "Mehrmals/Tag", "Mehrmals/Woche", "Einmal/Woche", "Mehrmals/Monat", "Einmal/Monat"],
+        datasets: [
+            { label: "Anzahl", data: [2, 38, 60, 19, 10, 9], backgroundColor: "#4A90E2" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
 
-<!-- DIAGRAMM 4 -->
-<div class="question-box">
-    <h2>Nutzungshäufigkeit nach Altersgruppen</h2>
-    <p>
-        Die Altersgruppe 12–20 nutzt KI deutlich häufiger als ältere Gruppen.<sup>1</sup> 
-        Forschende erklären dies damit, dass jüngere Menschen mit KI‑basierten Systemen aufwachsen und weniger Berührungsängste haben.<sup>4</sup> 
-        Ältere Altersgruppen nutzen KI dagegen eher gezielt und seltener im Alltag.<sup>5</sup> 
-        Dieser Generationenunterschied bleibt laut Prognosen auch 2026 bestehen.<sup>6</sup>
-    </p>
-    <canvas id="potenzial4"></canvas>
-</div>
+/* DIAGRAMM 4 */
+new Chart(document.getElementById("d4"), {
+    type: "bar",
+    data: {
+        labels: ["12–20", "31–45", "45–60", "60+"],
+        datasets: [
+            { label: "Mehrmals/Woche", data: [58, 2, 1, 0], backgroundColor: "#2980b9" },
+            { label: "Mehrmals/Tag", data: [20, 1, 0, 0], backgroundColor: "#7f8c8d" },
+            { label: "Einmal/Woche", data: [30, 1, 0, 0], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
 
-<!-- DIAGRAMM 5 -->
-<div class="question-box">
-    <h2>Zusammenhang zwischen Nutzung und Einstellung</h2>
-    <p>
-        Vielnutzer sehen KI häufiger positiv, während Wenignutzer eher skeptisch bleiben.<sup>1</sup> 
-        Studien aus 2026 bestätigen, dass regelmäßige Nutzung Ängste reduziert und Vertrauen stärkt.<sup>2</sup> 
-        Gleichzeitig führt Erfahrung zu einer realistischeren Einschätzung von Chancen und Risiken.<sup>4</sup> 
-        Dieser Zusammenhang gilt laut Forschung für alle Altersgruppen, besonders aber für Jugendliche.<sup>6</sup>
-    </p>
-    <canvas id="potenzial5"></canvas>
-</div>
+/* DIAGRAMM 5 */
+new Chart(document.getElementById("d5"), {
+    type: "bar",
+    data: {
+        labels: ["Neutral", "Potenzial", "Angst", "Gegen KI"],
+        datasets: [
+            { label: "Mehrmals/Woche", data: [40, 35, 5, 2], backgroundColor: "#2980b9" },
+            { label: "Mehrmals/Tag", data: [20, 15, 3, 1], backgroundColor: "#7f8c8d" },
+            { label: "Einmal/Woche", data: [25, 20, 2, 1], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+</script>
+
+</body>
+</html>
