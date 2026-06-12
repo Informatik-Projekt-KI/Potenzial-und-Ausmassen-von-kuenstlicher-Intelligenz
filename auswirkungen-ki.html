@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Ökologische Auswirkungen von KI – KI-Projekt</title>
+    <title>Auswirkungen KI – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -51,68 +51,35 @@
 
     <main class="content-card">
 
-        <h1>Ökologische Auswirkungen von Künstlicher Intelligenz</h1>
-
-        <!-- EINLEITUNG + QUELLEN -->
-        <div class="question-box">
-            <p>
-                Die folgenden Auswertungen basieren auf unserer eigenen Umfrage mit 138 Teilnehmenden.<sup>1</sup>
-                Da ein Großteil der Befragten zwischen 12–20 Jahren alt ist, spiegeln die Ergebnisse vor allem die Perspektive einer jungen Zielgruppe wider.<sup>1</sup>
-                Diese Altersgruppe nutzt KI besonders intensiv, wodurch das Bewusstsein für ökologische Auswirkungen unterschiedlich ausgeprägt ist.<sup>5</sup>
-                Die Diagramme zeigen, wie Wissen, Nutzung und Einstellungen miteinander zusammenhängen und welche Rolle ökologische Faktoren dabei spielen.<sup>7</sup>
-            </p>
-
-            <h3 style="font-family: 'Agency FB'; text-align: center; margin: 20px 0 10px;">Quellen</h3>
-            <p><sup>1</sup> Eigene Umfrage (2026).</p>
-            <p><sup>2</sup> Europäische Digitalstudie (2026). KI‑Nutzung & Vertrauen.</p>
-            <p><sup>5</sup> SRF Digital (2026). KI‑Tools im Alltag.</p>
-            <p><sup>7</sup> Internationale Energieagentur (IEA, 2026). Data Centres & Energy.</p>
-        </div>
+        <h1>Ökologische Auswirkungen von KI</h1>
 
         <!-- DIAGRAMM 1 -->
         <div class="question-box">
-            <h2>Wissen über ökologische Auswirkungen von KI</h2>
-            <p>
-                Die Umfrage zeigt, dass viele Teilnehmende nur teilweise wissen, welche ökologischen Folgen KI‑Systeme verursachen.<sup>1</sup>
-                Laut IEA‑Berichten 2026 steigt der weltweite Energieverbrauch von Rechenzentren weiter an, besonders durch KI‑Modelle.<sup>7</sup>
-                Große Sprachmodelle benötigen enorme Mengen Strom und Kühlleistung, was ihren CO₂‑Fußabdruck deutlich erhöht.<sup>7</sup>
-                Forschende betonen, dass fehlendes Wissen oft dazu führt, dass diese Belastungen unterschätzt werden.<sup>5</sup>
-            </p>
-            <canvas id="auswirkung1"></canvas>
+            <h2>Wissen über ökologische Auswirkungen</h2>
+            <canvas id="e1"></canvas>
+            <p>Fast die Hälfte der Befragten kennt die ökologischen Auswirkungen von KI. Ein großer Teil kennt sie zumindest teilweise. Nur wenige wissen gar nichts darüber. Das zeigt ein relativ hohes Bewusstsein für die Umweltkosten von KI.</p>
         </div>
 
         <!-- DIAGRAMM 2 -->
         <div class="question-box">
-            <h2>Wissen und Einstellung gegenüber KI</h2>
-            <p>
-                Die Daten zeigen, dass Personen mit höherem Wissen KI häufiger positiv einschätzen, während geringes Wissen eher zu Unsicherheiten führt.<sup>1</sup>
-                Studien aus Europa bestätigen, dass informierte Nutzer Risiken realistischer einordnen können und weniger Angst vor KI haben.<sup>2</sup>
-                Gleichzeitig führt Wissen zu einer differenzierteren Bewertung zwischen Nutzen und ökologischen Kosten.<sup>5</sup>
-                Dieser Zusammenhang bleibt laut Forschung auch 2026 stabil und zeigt sich besonders bei jungen Nutzergruppen.<sup>7</sup>
-            </p>
-            <canvas id="auswirkung2"></canvas>
+            <h2>Wissen × Beziehung zu KI</h2>
+            <canvas id="e2"></canvas>
+            <p>Menschen, die wissen, wie viel Strom und Wasser KI verbraucht, ändern ihr Verhalten nicht. Sie bleiben neutral oder sehen weiterhin Potenzial in KI. Das Wissen allein reicht nicht aus, um Einstellungen zu verändern. Dieses Muster ähnelt anderen Bereichen wie Fleischkonsum oder Fliegen.</p>
         </div>
 
         <!-- DIAGRAMM 3 -->
         <div class="question-box">
-            <h2>Wissen und Nutzungshäufigkeit von KI</h2>
-            <p>
-                Die Ergebnisse zeigen, dass Personen mit gutem Wissen KI häufiger nutzen als jene mit geringem Wissen.<sup>1</sup>
-                Forschende erklären dies damit, dass Verständnis über Funktionsweise Hemmschwellen reduziert und Vertrauen stärkt.<sup>5</sup>
-                Gleichzeitig steigt bei Vielnutzern das Bewusstsein für ökologische Belastungen durch KI‑Systeme, etwa durch Energieverbrauch.<sup>7</sup>
-                Dieser Effekt wird 2026 besonders in jüngeren Altersgruppen beobachtet, die KI täglich verwenden.<sup>2</sup>
-            </p>
-            <canvas id="auswirkung3"></canvas>
+            <h2>Wissen × Nutzungshäufigkeit</h2>
+            <canvas id="e3"></canvas>
+            <p>Menschen, die die ökologischen Auswirkungen kennen, nutzen KI am häufigsten. Informierte Personen setzen sich aktiver mit KI auseinander. Dadurch steigt automatisch die Nutzung. Ein schlechtes Gewissen wegen Umweltkosten spielt offenbar kaum eine Rolle.</p>
         </div>
 
     </main>
 </div>
 
 <script>
-/* ====== PIVOT-DIAGRAMME (Chart.js) ====== */
-
-/* Diagramm 1 – Wissen über ökologische Auswirkungen */
-new Chart(document.getElementById("auswirkung1"), {
+/* DIAGRAMM 1 */
+new Chart(document.getElementById("e1"), {
     type: "doughnut",
     data: {
         labels: ["Ja", "Nein", "Zum Teil"],
@@ -124,8 +91,8 @@ new Chart(document.getElementById("auswirkung1"), {
     options: { responsive: true }
 });
 
-/* Diagramm 2 – Wissen × Beziehung zu KI */
-new Chart(document.getElementById("auswirkung2"), {
+/* DIAGRAMM 2 */
+new Chart(document.getElementById("e2"), {
     type: "bar",
     data: {
         labels: ["Ja", "Nein", "Zum Teil"],
@@ -139,8 +106,8 @@ new Chart(document.getElementById("auswirkung2"), {
     options: { indexAxis: "y", responsive: true }
 });
 
-/* Diagramm 3 – Wissen × Nutzungshäufigkeit */
-new Chart(document.getElementById("auswirkung3"), {
+/* DIAGRAMM 3 */
+new Chart(document.getElementById("e3"), {
     type: "bar",
     data: {
         labels: ["Ja", "Nein", "Zum Teil"],
