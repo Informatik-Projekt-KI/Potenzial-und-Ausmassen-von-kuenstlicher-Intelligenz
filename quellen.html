@@ -1,181 +1,198 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Quellen – KI-Projekt</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Quellen – KI-Projekt</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            background: #000000;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .page-wrapper { width: 100%; max-width: 1100px; }
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #111111;
-            border-radius: 18px;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-        .logo {
-            font-family: "Bauhaus 93";
-            font-size: 26px;
-            letter-spacing: 1px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            font-family: "Agency FB";
-            font-size: 16px;
-            text-decoration: none;
-            color: #f5f5f5;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            transition: all 0.2s ease;
-        }
-        .nav-links a:hover {
-            background: #ffffff;
-            color: #000000;
-        }
-        .nav-links a.active {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 
-        .content-card {
-            background: #181818;
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-        }
+  /* Tech-Hintergrund */
+  background-image:
+    radial-gradient(circle at top left, rgba(88,101,242,0.35), transparent 55%),
+    radial-gradient(circle at top right, rgba(155,89,182,0.35), transparent 55%),
+    radial-gradient(circle at bottom left, rgba(52,152,219,0.35), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(142,68,173,0.35), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 4px);
+  background-attachment: fixed;
+  background-size: cover;
+}
 
-        h1 {
-            font-family: "Bauhaus 93";
-            font-size: 40px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.page-wrapper { width: 100%; max-width: 1100px; }
 
-        h2 {
-            font-family: "Agency FB";
-            font-size: 28px;
-            margin-top: 30px;
-            margin-bottom: 10px;
-        }
+/* NAVIGATION – hellgrau */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2a2a2a;
+  border-radius: 18px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
 
-        p, li {
-            font-size: 17px;
-            line-height: 1.7;
-            margin-bottom: 8px;
-        }
+.logo {
+  font-family: "Agency FB";
+  font-size: 26px;
+  letter-spacing: 1px;
+}
 
-        ul { padding-left: 20px; }
+.nav-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-        a.source-link {
-            color: #4da3ff;
-            text-decoration: underline;
-        }
-        a.source-link:hover {
-            color: #82c3ff;
-        }
-    </style>
+.nav-links a {
+  font-family: "Agency FB";
+  font-size: 16px;
+  text-decoration: none;
+  color: #f5f5f5;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* CONTENT-FELD – hellgrau */
+.content-card {
+  background: #2a2a2a;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+}
+
+h1 {
+  font-family: "Agency FB";
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: "Agency FB";
+  font-size: 28px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+p, li {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+ul { padding-left: 20px; }
+
+a.source-link {
+  color: #4da3ff;
+  text-decoration: underline;
+}
+
+a.source-link:hover {
+  color: #82c3ff;
+}
+</style>
 </head>
 
 <body>
 <div class="page-wrapper">
 
-    <!-- NAVIGATION -->
-    <header class="nav-bar">
-        <div class="logo">KI-Projekt</div>
-        <nav class="nav-links">
-            <a href="index.html">Startseite</a>
-            <a href="umfrage.html">Umfrage</a>
-            <a href="potenzial-ki.html">Potenzial KI</a>
-            <a href="auswirkungen-ki.html">Auswirkungen KI</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="quellen.html" class="active">Quellen</a>
-        </nav>
-    </header>
+<header class="nav-bar">
+  <div class="logo">KI-Projekt</div>
+  <nav class="nav-links">
+    <a href="index.html">Startseite</a>
+    <a href="umfrage.html">Umfrage</a>
+    <a href="potenzial-ki.html">Potenzial KI</a>
+    <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="chatbot.html">Chatbot</a>
+    <a href="quellen.html" class="active">Quellen</a>
+  </nav>
+</header>
 
-    <main class="content-card">
+<main class="content-card">
 
-        <h1>Quellen</h1>
+<h1>Quellen</h1>
 
-        <h2>Online‑Recherche</h2>
-        <ul>
-            <li>
-                Tableau. (2026, 12. Juni). 
-                <i>AI Examples & Use Cases.</i> 
-                <a class="source-link" href="https://www.tableau.com/de-de/data-insights/ai/examples" target="_blank">
-                    https://www.tableau.com/de-de/data-insights/ai/examples
-                </a>
-            </li>
+<h2>Online‑Recherche</h2>
 
-            <li>
-                Soxes. (2026, 12. Juni). 
-                <i>KI‑Einsatzbereiche: Beispiele aus dem Alltag.</i> 
-                <a class="source-link" href="https://soxes.ch/innovation/ki-einsatzbereiche/beispiele/" target="_blank">
-                    https://soxes.ch/innovation/ki-einsatzbereiche/beispiele/
-                </a>
-            </li>
+<ul>
+  <li>
+    Tableau. (2026, 12. Juni).
+    <i>AI Examples & Use Cases.</i>
+    <a class="source-link" href="https://www.tableau.com/de-de/data-insights/ai/examples" target="_blank">
+      https://www.tableau.com/de-de/data-insights/ai/examples
+    </a>
+  </li>
 
-            <li>
-                Technische Hochschule Würzburg-Schweinfurt (THWS). (2026, 12. Juni). 
-                <i>Anwendungsbereiche der Künstlichen Intelligenz.</i> 
-                <a class="source-link" href="https://ki.thws.de/thematik/anwendungsbereiche-der-ki/" target="_blank">
-                    https://ki.thws.de/thematik/anwendungsbereiche-der-ki/
-                </a>
-            </li>
+  <li>
+    Soxes. (2026, 12. Juni).
+    <i>KI‑Einsatzbereiche: Beispiele aus dem Alltag.</i>
+    <a class="source-link" href="https://soxes.ch/innovation/ki-einsatzbereiche/beispiele/" target="_blank">
+      https://soxes.ch/innovation/ki-einsatzbereiche/beispiele/
+    </a>
+  </li>
 
-            <li>
-                SRF. (2026, 12. Juni). 
-                <i>ChatGPT, Midjourney & Co.: Welche KI‑Tools sind nützlich für den Alltag?</i> 
-                <a class="source-link" href="https://www.srf.ch/wissen/kuenstliche-intelligenz/chatgpt-midjourney-und-co-welche-ki-tools-sind-nuetzlich-fuer-den-alltag" target="_blank">
-                    https://www.srf.ch/wissen/kuenstliche-intelligenz/chatgpt-midjourney-und-co-welche-ki-tools-sind-nuetzlich-fuer-den-alltag
-                </a>
-            </li>
+  <li>
+    Technische Hochschule Würzburg-Schweinfurt (THWS). (2026, 12. Juni).
+    <i>Anwendungsbereiche der Künstlichen Intelligenz.</i>
+    <a class="source-link" href="https://ki.thws.de/thematik/anwendungsbereiche-der-ki/" target="_blank">
+      https://ki.thws.de/thematik/anwendungsbereiche-der-ki/
+    </a>
+  </li>
 
-            <li>
-                ITPortal24. (2026, 12. Juni). 
-                <i>KI im Alltag: Chancen und Risiken.</i> 
-                <a class="source-link" href="https://www.itportal24.de/ratgeber/ki-im-alltag" target="_blank">
-                    https://www.itportal24.de/ratgeber/ki-im-alltag
-                </a>
-            </li>
+  <li>
+    SRF. (2026, 12. Juni).
+    <i>ChatGPT, Midjourney & Co.: Welche KI‑Tools sind nützlich für den Alltag?</i>
+    <a class="source-link" href="https://www.srf.ch/wissen/kuenstliche-intelligenz/chatgpt-midjourney-und-co-welche-ki-tools-sind-nuetzlich-fuer-den-alltag" target="_blank">
+      https://www.srf.ch/wissen/kuenstliche-intelligenz/chatgpt-midjourney-und-co-welche-ki-tools-sind-nuetzlich-fuer-den-alltag
+    </a>
+  </li>
 
-            <li>
-                „Künstliche Intelligenz und die Umwelt: Chancen und Herausforderungen.“ (2026, 12. Juni).  
-                (Allgemeiner Fachartikel ohne spezifische URL.)
-            </li>
-        </ul>
+  <li>
+    ITPortal24. (2026, 12. Juni).
+    <i>KI im Alltag: Chancen und Risiken.</i>
+    <a class="source-link" href="https://www.itportal24.de/ratgeber/ki-im-alltag" target="_blank">
+      https://www.itportal24.de/ratgeber/ki-im-alltag
+    </a>
+  </li>
 
-        <h2>Eigene Daten</h2>
-        <ul>
-            <li>Eigene Umfrage. (2026). <i>Umfrage zu Nutzung, Potenzial und Auswirkungen von KI.</i> Kantonsschule Küsnacht.</li>
-        </ul>
+  <li>
+    „Künstliche Intelligenz und die Umwelt: Chancen und Herausforderungen.“ (2026, 12. Juni).
+    (Allgemeiner Fachartikel ohne spezifische URL.)
+  </li>
+</ul>
 
-        <h2>Erstellung der Website</h2>
-        <ul>
-            <li>Microsoft Copilot. (2026). Unterstützung bei der Code‑Generierung.</li>
-        </ul>
+<h2>Eigene Daten</h2>
+<ul>
+  <li>Eigene Umfrage. (2026). <i>Umfrage zu Nutzung, Potenzial und Auswirkungen von KI.</i> Kantonsschule Küsnacht.</li>
+</ul>
 
-    </main>
+<h2>Erstellung der Website</h2>
+<ul>
+  <li>Microsoft Copilot. (2026). Unterstützung bei der Code‑Generierung.</li>
+</ul>
+
+</main>
 </div>
+
 </body>
 </html>
