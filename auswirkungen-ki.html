@@ -66,15 +66,15 @@
 
         <!-- DIAGRAMM 1 -->
         <div class="question-box">
-            <h2>Wissen über ökologische Auswirkungen</h2>
-            <p>Die Mehrheit kennt die ökologischen Auswirkungen von KI zumindest teilweise; nur wenige wissen gar nichts darüber.<sup>1</sup></p>
+            <h2>Wissen über ökologische Auswirkungen von KI</h2>
+            <p>Die Mehrheit der Teilnehmenden gab an, die ökologischen Auswirkungen von KI zumindest teilweise zu kennen.<sup>1</sup></p>
             <p>Rechenzentren könnten ihren Energieverbrauch bis 2030 verdreifachen, was erhebliche ökologische Folgen hat.<sup>7</sup></p>
             <canvas id="auswirkung1"></canvas>
         </div>
 
         <!-- DIAGRAMM 2 -->
         <div class="question-box">
-            <h2>Zusammenhang zwischen Wissen und Einstellung</h2>
+            <h2>Wissen und Einstellung gegenüber KI</h2>
             <p>Personen mit höherem Wissen sehen häufiger Potenzial in KI, während geringes Wissen häufiger zu Unsicherheiten führt.<sup>1</sup></p>
             <p>Wissen reduziert laut Forschung Ängste und führt zu differenzierteren Bewertungen.<sup>2</sup></p>
             <canvas id="auswirkung2"></canvas>
@@ -82,6 +82,72 @@
 
         <!-- DIAGRAMM 3 -->
         <div class="question-box">
-            <h2>Zusammenhang zwischen Wissen und Nutzungshäufigkeit</h2>
+            <h2>Wissen und Nutzungshäufigkeit von KI</h2>
             <p>Personen, die KI gut kennen, nutzen sie häufiger; geringes Wissen führt zu seltener Nutzung.<sup>1</sup></p>
-            <p>Häufige Nutzung erhöht das Bewusstsein für ökologische Belastungen und technische Hintergründe
+            <p>Häufige Nutzung erhöht das Bewusstsein für ökologische Belastungen und technische Hintergründe.<sup>5</sup></p>
+            <canvas id="auswirkung3"></canvas>
+        </div>
+
+        <!-- QUELLEN -->
+        <div style="margin-top: 40px; font-size: 14px; line-height: 1.6; opacity: 0.8;">
+            <h3 style="font-family: 'Agency FB'; text-align: center; margin-bottom: 10px;">Quellen</h3>
+            <p><sup>1</sup> Eigene Umfrage (2024).</p>
+            <p><sup>2</sup> Tableau (2024). <i>AI Examples & Use Cases.</i></p>
+            <p><sup>5</sup> SRF (2024). <i>KI‑Tools im Alltag.</i></p>
+            <p><sup>7</sup> Internationale Energieagentur (IEA). <i>Data Centres & Energy.</i></p>
+        </div>
+
+    </main>
+</div>
+
+<script>
+/* ====== PIVOT-DIAGRAMME (Chart.js) ====== */
+
+/* Diagramm 1 – Wissen über ökologische Auswirkungen */
+new Chart(document.getElementById("auswirkung1"), {
+    type: "doughnut",
+    data: {
+        labels: ["Ja", "Nein", "Zum Teil"],
+        datasets: [{
+            data: [43, 14, 64],
+            backgroundColor: ["#3498db", "#e67e22", "#7f8c8d"]
+        }]
+    },
+    options: { responsive: true }
+});
+
+/* Diagramm 2 – Wissen × Beziehung zu KI */
+new Chart(document.getElementById("auswirkung2"), {
+    type: "bar",
+    data: {
+        labels: ["Ja", "Nein", "Zum Teil"],
+        datasets: [
+            { label: "Neutral", data: [10, 6, 25], backgroundColor: "#f1c40f" },
+            { label: "Potenzial", data: [27, 4, 26], backgroundColor: "#7f8c8d" },
+            { label: "Angst", data: [3, 3, 8], backgroundColor: "#e67e22" },
+            { label: "Gegen KI", data: [3, 1, 5], backgroundColor: "#3498db" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+
+/* Diagramm 3 – Wissen × Nutzungshäufigkeit */
+new Chart(document.getElementById("auswirkung3"), {
+    type: "bar",
+    data: {
+        labels: ["Ja", "Nein", "Zum Teil"],
+        datasets: [
+            { label: "Stündlich", data: [1, 0, 1], backgroundColor: "#2ecc71" },
+            { label: "Mehrmals/Tag", data: [16, 4, 22], backgroundColor: "#7f8c8d" },
+            { label: "Mehrmals/Woche", data: [20, 7, 33], backgroundColor: "#2980b9" },
+            { label: "Einmal/Woche", data: [4, 2, 7], backgroundColor: "#3498db" },
+            { label: "Mehrmals/Monat", data: [1, 1, 1], backgroundColor: "#f1c40f" },
+            { label: "Einmal/Monat", data: [1, 0, 0], backgroundColor: "#e67e22" }
+        ]
+    },
+    options: { indexAxis: "y", responsive: true }
+});
+</script>
+
+</body>
+</html>
