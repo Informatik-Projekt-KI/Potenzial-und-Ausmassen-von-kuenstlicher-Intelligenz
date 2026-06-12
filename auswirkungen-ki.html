@@ -2,13 +2,26 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Auswirkungen KI – KI-Projekt</title>
+    <title>Ökologische Auswirkungen von KI – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body { background:#000; color:#fff; font-family:Arial; padding:20px; display:flex; justify-content:center; }
         .page-wrapper { width:100%; max-width:1100px; }
+        .nav-bar {
+            display:flex; justify-content:space-between; align-items:center;
+            background:#111; padding:10px 20px; border-radius:18px;
+            margin-bottom:20px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
+        }
+        .logo { font-family:"Bauhaus 93"; font-size:26px; }
+        .nav-links { display:flex; gap:14px; }
+        .nav-links a {
+            font-family:"Agency FB"; font-size:16px; text-decoration:none;
+            color:#fff; padding:8px 14px; border-radius:999px;
+            background:#1a1a1a; border:1px solid #2a2a2a;
+        }
+        .nav-links a.active, .nav-links a:hover { background:#fff; color:#000; }
         .content-card { background:#181818; padding:30px; border-radius:24px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
         h1,h2 { text-align:center; font-family:"Agency FB"; letter-spacing:1px; }
         h1 { font-size:40px; margin-bottom:20px; }
@@ -21,9 +34,24 @@
 
 <body>
 <div class="page-wrapper">
+
+    <!-- NAVIGATION -->
+    <header class="nav-bar">
+        <div class="logo">KI-Projekt</div>
+        <nav class="nav-links">
+            <a href="index.html">Startseite</a>
+            <a href="umfrage.html">Umfrage</a>
+            <a href="potenzial-ki.html">Potenzial KI</a>
+            <a href="auswirkungen-ki.html" class="active">Auswirkungen KI</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quellen.html">Quellen</a>
+        </nav>
+    </header>
+
     <main class="content-card">
 
-        <h1>Ökologische Auswirkungen von KI</h1>
+        <h1>Ökologische Auswirkungen von Künstlicher Intelligenz</h1>
 
         <!-- EINLEITUNG -->
         <div class="question-box">
@@ -46,31 +74,14 @@
 
         <!-- DIAGRAMM 2 -->
         <div class="question-box">
-            <h2>Wissen × Beziehung zu KI</h2>
-            <p>Personen mit höherem Wissen sehen häufiger Potenzial in KI, während geringes Wissen häufiger zu Angst führt.<sup>1</sup></p>
-            <p>Wissen reduziert Unsicherheiten und führt zu differenzierteren Bewertungen von KI‑Systemen.<sup>2</sup></p>
+            <h2>Zusammenhang zwischen Wissen und Einstellung</h2>
+            <p>Personen mit höherem Wissen sehen häufiger Potenzial in KI, während geringes Wissen häufiger zu Unsicherheiten führt.<sup>1</sup></p>
+            <p>Wissen reduziert laut Forschung Ängste und führt zu differenzierteren Bewertungen.<sup>2</sup></p>
             <canvas id="auswirkung2"></canvas>
         </div>
 
         <!-- DIAGRAMM 3 -->
         <div class="question-box">
-            <h2>Wissen × Nutzungshäufigkeit</h2>
+            <h2>Zusammenhang zwischen Wissen und Nutzungshäufigkeit</h2>
             <p>Personen, die KI gut kennen, nutzen sie häufiger; geringes Wissen führt zu seltener Nutzung.<sup>1</sup></p>
-            <p>Häufige Nutzung erhöht das Bewusstsein für ökologische Belastungen und technische Hintergründe.<sup>5</sup></p>
-            <canvas id="auswirkung3"></canvas>
-        </div>
-
-        <!-- QUELLEN -->
-        <div style="margin-top: 40px; font-size: 14px; line-height: 1.6; opacity: 0.8;">
-            <h3 style="font-family: 'Agency FB'; text-align: center; margin-bottom: 10px;">Quellen</h3>
-            <p><sup>1</sup> Eigene Umfrage (2024).</p>
-            <p><sup>2</sup> Tableau (2024). <i>AI Examples & Use Cases.</i></p>
-            <p><sup>5</sup> SRF (2024). <i>KI‑Tools im Alltag.</i></p>
-            <p><sup>7</sup> Internationale Energieagentur (IEA). <i>Data Centres & Energy.</i></p>
-        </div>
-
-    </main>
-</div>
-</body>
-</html>
-
+            <p>Häufige Nutzung erhöht das Bewusstsein für ökologische Belastungen und technische Hintergründe
