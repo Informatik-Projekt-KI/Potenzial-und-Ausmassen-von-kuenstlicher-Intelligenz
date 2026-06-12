@@ -7,26 +7,87 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        body { background:#000; color:#fff; font-family:Arial; padding:20px; display:flex; justify-content:center; }
-        .page-wrapper { width:100%; max-width:1100px; }
+        body { 
+            background:#000; 
+            color:#fff; 
+            font-family:Arial; 
+            padding:20px; 
+            display:flex; 
+            justify-content:center; 
+        }
+
+        .page-wrapper { 
+            width:100%; 
+            max-width:1100px; 
+        }
+
         .nav-bar {
-            display:flex; justify-content:space-between; align-items:center;
-            background:#111; padding:10px 20px; border-radius:18px;
-            margin-bottom:20px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center;
+            background:#111; 
+            padding:10px 20px; 
+            border-radius:18px;
+            margin-bottom:20px; 
+            box-shadow:0 10px 30px rgba(0,0,0,0.6);
         }
-        .logo { font-family:"Bauhaus 93"; font-size:26px; }
-        .nav-links { display:flex; gap:14px; }
+
+        .logo { 
+            font-family:"Bauhaus 93"; 
+            font-size:26px; 
+        }
+
+        .nav-links { 
+            display:flex; 
+            gap:14px; 
+        }
+
         .nav-links a {
-            font-family:"Agency FB"; font-size:16px; text-decoration:none;
-            color:#fff; padding:8px 14px; border-radius:999px;
-            background:#1a1a1a; border:1px solid #2a2a2a;
+            font-family:"Agency FB"; 
+            font-size:16px; 
+            text-decoration:none;
+            color:#fff; 
+            padding:8px 14px; 
+            border-radius:999px;
+            background:#1a1a1a; 
+            border:1px solid #2a2a2a;
         }
-        .nav-links a.active, .nav-links a:hover { background:#fff; color:#000; }
-        .content-card { background:#181818; padding:30px; border-radius:24px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
-        h1,h2 { text-align:center; font-family:"Agency FB"; letter-spacing:1px; }
-        h1 { font-size:40px; margin-bottom:20px; }
-        h2 { font-size:28px; margin-top:40px; margin-bottom:10px; }
-        p { font-size:17px; line-height:1.7; margin-bottom:10px; }
+
+        .nav-links a.active, 
+        .nav-links a:hover { 
+            background:#fff; 
+            color:#000; 
+        }
+
+        .content-card { 
+            background:#181818; 
+            padding:30px; 
+            border-radius:24px; 
+            box-shadow:0 18px 40px rgba(0,0,0,0.7); 
+        }
+
+        h1,h2 { 
+            text-align:center; 
+            font-family:"Agency FB"; 
+            letter-spacing:1px; 
+        }
+
+        h1 { 
+            font-size:40px; 
+            margin-bottom:20px; 
+        }
+
+        h2 { 
+            font-size:28px; 
+            margin-top:40px; 
+            margin-bottom:10px; 
+        }
+
+        p { 
+            font-size:17px; 
+            line-height:1.7; 
+            margin-bottom:10px; 
+        }
 
         .question-box {
             background:#202020;
@@ -43,125 +104,140 @@
             display: block;
         }
 
-        canvas { margin-top:20px; }
+        canvas { 
+            margin-top:20px; 
+        }
     </style>
 </head>
 
 <body>
-<div class="page-wrapper">
+    <div class="page-wrapper">
 
-    <!-- NAVIGATION -->
-    <header class="nav-bar">
-        <div class="logo">KI-Projekt</div>
-        <nav class="nav-links">
-            <a href="index.html">Startseite</a>
-            <a href="umfrage.html">Umfrage</a>
-            <a href="potenzial-ki.html">Potenzial KI</a>
-            <a href="auswirkungen-ki.html" class="active">Auswirkungen KI</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="quellen.html">Quellen</a>
-        </nav>
-    </header>
+        <!-- NAVIGATION -->
+        <header class="nav-bar">
+            <div class="logo">KI-Projekt</div>
 
-    <main class="content-card">
+            <nav class="nav-links">
+                <a href="index.html">Startseite</a>
+                <a href="umfrage.html">Umfrage</a>
+                <a href="potenzial-ki.html">Potenzial KI</a>
+                <a href="auswirkungen-ki.html" class="active">Auswirkungen KI</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="chatbot.html">Chatbot</a>
+                <a href="quellen.html">Quellen</a>
+            </nav>
+        </header>
 
-        <h1>Ökologische Auswirkungen von KI</h1>
+        <main class="content-card">
 
-        <!-- EINLEITUNG -->
-        <div class="question-box">
-            <p>
-                Die folgenden Diagramme stellen Schlussfolgerungen aus unserer Umfrage dar. 
-                Dabei ist wichtig zu beachten, dass die Stichprobe nicht ausgewogen war: 
-                Ein Großteil der Teilnehmenden war zwischen 12 und 20 Jahren alt und überwiegend weiblich. 
-                Dadurch können bestimmte Trends stärker erscheinen, als sie in einer neutralen, gleichmäßig verteilten Stichprobe wären. 
-                Die Diagramme zeigen daher vor allem die Einstellungen und das Nutzungsverhalten dieser jungen Zielgruppe.
-            </p>
-        </div>
+            <h1>Ökologische Auswirkungen von KI</h1>
 
-        <!-- DIAGRAMM 1 -->
-        <div class="question-box">
-            <h2>Wissen über ökologische Auswirkungen</h2>
-            <canvas id="e1"></canvas>
-            <p>Fast die Hälfte der Befragten kennt die ökologischen Auswirkungen von KI. Ein großer Teil kennt sie zumindest teilweise. Nur wenige wissen gar nichts darüber. Das zeigt ein relativ hohes Bewusstsein für die Umweltkosten von KI.</p>
-        </div>
+            <!-- EINLEITUNG -->
+            <div class="question-box">
+                <p>
+                    Die folgenden Diagramme stellen Schlussfolgerungen aus unserer Umfrage dar.
+                    Dabei ist wichtig zu beachten, dass die Stichprobe nicht ausgewogen war:
+                    Ein Großteil der Teilnehmenden war zwischen 12 und 20 Jahren alt und überwiegend weiblich.
+                    Dadurch können bestimmte Trends stärker erscheinen, als sie in einer neutralen, 
+                    gleichmäßig verteilten Stichprobe wären.
+                    Die Diagramme zeigen daher vor allem die Einstellungen und das Nutzungsverhalten 
+                    dieser jungen Zielgruppe.
+                </p>
+            </div>
 
-        <!-- DIAGRAMM 2 -->
-        <div class="question-box">
-            <h2>Wissen × Beziehung zu KI</h2>
-            <canvas id="e2"></canvas>
-            <p>Menschen, die wissen, wie viel Strom und Wasser KI verbraucht, ändern ihr Verhalten nicht. Sie bleiben neutral oder sehen weiterhin Potenzial in KI. Das Wissen allein reicht nicht aus, um Einstellungen zu verändern. Dieses Muster ähnelt anderen Bereichen wie Fleischkonsum oder Fliegen.</p>
-        </div>
+            <!-- DIAGRAMM 1 -->
+            <div class="question-box">
+                <h2>Wissen über ökologische Auswirkungen</h2>
+                <canvas id="e1"></canvas>
+                <p>
+                    Fast die Hälfte der Befragten kennt die ökologischen Auswirkungen von KI. 
+                    Ein großer Teil kennt sie zumindest teilweise. Nur wenige wissen gar nichts darüber. 
+                    Das zeigt ein relativ hohes Bewusstsein für die Umweltkosten von KI.
+                </p>
+            </div>
 
-        <!-- DIAGRAMM 3 -->
-        <div class="question-box">
-            <h2>Wissen × Nutzungshäufigkeit</h2>
-            <canvas id="e3"></canvas>
-            <p>Menschen, die die ökologischen Auswirkungen kennen, nutzen KI am häufigsten. Informierte Personen setzen sich aktiver mit KI auseinander. Dadurch steigt automatisch die Nutzung. Ein schlechtes Gewissen wegen Umweltkosten spielt offenbar kaum eine Rolle.</p>
-        </div>
+            <!-- DIAGRAMM 2 -->
+            <div class="question-box">
+                <h2>Wissen × Beziehung zu KI</h2>
+                <canvas id="e2"></canvas>
+                <p>
+                    Menschen, die wissen, wie viel Strom und Wasser KI verbraucht, ändern ihr Verhalten nicht. 
+                    Sie bleiben neutral oder sehen weiterhin Potenzial in KI. Das Wissen allein reicht nicht aus, 
+                    um Einstellungen zu verändern. Dieses Muster ähnelt anderen Bereichen wie Fleischkonsum oder Fliegen.
+                </p>
+            </div>
 
-    </main>
-</div>
+            <!-- DIAGRAMM 3 -->
+            <div class="question-box">
+                <h2>Wissen × Nutzungshäufigkeit</h2>
+                <canvas id="e3"></canvas>
+                <p>
+                    Menschen, die die ökologischen Auswirkungen kennen, nutzen KI am häufigsten. 
+                    Informierte Personen setzen sich aktiver mit KI auseinander. Dadurch steigt automatisch die Nutzung. 
+                    Ein schlechtes Gewissen wegen Umweltkosten spielt offenbar kaum eine Rolle.
+                </p>
+            </div>
 
-<script>
-/* DIAGRAMM 1 – kleiner Donut + kompakte Box */
-new Chart(document.getElementById("e1"), {
-    type: "doughnut",
-    data: {
-        labels: ["Ja", "Nein", "Zum Teil"],
-        datasets: [{
-            data: [43, 14, 64],
-            backgroundColor: ["#3498db", "#e67e22", "#7f8c8d"]
-        }]
-    },
-    options: { 
-        responsive: true,
-        cutout: "68%",   // Loch größer → Donut kleiner
-        radius: 80,      // Gesamtgröße kleiner
-        layout: {
-            padding: 0
-        },
-        plugins: {
-            legend: {
-                position: "bottom",
-                labels: { color: "#fff", padding: 10 }
+        </main>
+    </div>
+
+    <script>
+        /* DIAGRAMM 1 – kleiner Donut + kompakte Box */
+        new Chart(document.getElementById("e1"), {
+            type: "doughnut",
+            data: {
+                labels: ["Ja", "Nein", "Zum Teil"],
+                datasets: [{
+                    data: [43, 14, 64],
+                    backgroundColor: ["#3498db", "#e67e22", "#7f8c8d"]
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: "68%", 
+                radius: 80,
+                layout: { padding: 0 },
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: { color: "#fff", padding: 10 }
+                    }
+                }
             }
-        }
-    }
-});
+        });
 
-/* DIAGRAMM 2 */
-new Chart(document.getElementById("e2"), {
-    type: "bar",
-    data: {
-        labels: ["Ja", "Nein", "Zum Teil"],
-        datasets: [
-            { label: "Neutral", data: [10, 6, 25], backgroundColor: "#f1c40f" },
-            { label: "Potenzial", data: [27, 4, 26], backgroundColor: "#7f8c8d" },
-            { label: "Angst", data: [3, 3, 8], backgroundColor: "#e67e22" },
-            { label: "Gegen KI", data: [3, 1, 5], backgroundColor: "#3498db" }
-        ]
-    },
-    options: { indexAxis: "y", responsive: true }
-});
+        /* DIAGRAMM 2 */
+        new Chart(document.getElementById("e2"), {
+            type: "bar",
+            data: {
+                labels: ["Ja", "Nein", "Zum Teil"],
+                datasets: [
+                    { label: "Neutral", data: [10, 6, 25], backgroundColor: "#f1c40f" },
+                    { label: "Potenzial", data: [27, 4, 26], backgroundColor: "#7f8c8d" },
+                    { label: "Angst", data: [3, 3, 8], backgroundColor: "#e67e22" },
+                    { label: "Gegen KI", data: [3, 1, 5], backgroundColor: "#3498db" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* DIAGRAMM 3 */
-new Chart(document.getElementById("e3"), {
-    type: "bar",
-    data: {
-        labels: ["Ja", "Nein", "Zum Teil"],
-        datasets: [
-            { label: "Stündlich", data: [1, 0, 1], backgroundColor: "#2ecc71" },
-            { label: "Mehrmals/Tag", data: [16, 4, 22], backgroundColor: "#7f8c8d" },
-            { label: "Mehrmals/Woche", data: [20, 7, 33], backgroundColor: "#2980b9" },
-            { label: "Einmal/Woche", data: [4, 2, 7], backgroundColor: "#3498db" },
-            { label: "Mehrmals/Monat", data: [1, 1, 1], backgroundColor: "#f1c40f" },
-            { label: "Einmal/Monat", data: [1, 0, 0], backgroundColor: "#e67e22" }
-        ]
-    },
-    options: { indexAxis: "y", responsive: true }
-});
-</script>
+        /* DIAGRAMM 3 */
+        new Chart(document.getElementById("e3"), {
+            type: "bar",
+            data: {
+                labels: ["Ja", "Nein", "Zum Teil"],
+                datasets: [
+                    { label: "Stündlich", data: [1, 0, 1], backgroundColor: "#2ecc71" },
+                    { label: "Mehrmals/Tag", data: [16, 4, 22], backgroundColor: "#7f8c8d" },
+                    { label: "Mehrmals/Woche", data: [20, 7, 33], backgroundColor: "#2980b9" },
+                    { label: "Einmal/Woche", data: [4, 2, 7], backgroundColor: "#3498db" },
+                    { label: "Mehrmals/Monat", data: [1, 1, 1], backgroundColor: "#f1c40f" },
+                    { label: "Einmal/Monat", data: [1, 0, 0], backgroundColor: "#e67e22" }
+                ]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
+    </script>
 
 </body>
 </html>
