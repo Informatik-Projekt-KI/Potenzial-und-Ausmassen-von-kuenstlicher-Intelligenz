@@ -4,21 +4,18 @@
 <meta charset="UTF-8">
 <title>Startseite – KI-Projekt</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #000000;
-  color: #ffffff;
+  background: #000;
+  color: #fff;
   font-family: Arial, sans-serif;
   min-height: 100vh;
   padding: 20px;
 
-  /* Minimalistischer Tech-Linien-/Glow-Hintergrund */
+  /* Tech-Hintergrund */
   background-image:
     radial-gradient(circle at top left, rgba(88,101,242,0.35), transparent 55%),
     radial-gradient(circle at top right, rgba(155,89,182,0.35), transparent 55%),
@@ -27,40 +24,27 @@ body {
     repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 4px);
   background-attachment: fixed;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
-.page-wrapper {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+.page-wrapper { width: 100%; max-width: 1100px; margin: 0 auto; }
 
 .nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #111111;
-  border-radius: 18px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: #111; border-radius: 18px;
+  padding: 10px 20px; margin-bottom: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 .logo {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Agency FB";
   font-size: 26px;
   letter-spacing: 1px;
 }
 
-.nav-links {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
+.nav-links { display: flex; gap: 14px; flex-wrap: wrap; }
 
 .nav-links a {
-  font-family: "Agency FB", sans-serif;
+  font-family: "Agency FB";
   font-size: 16px;
   text-decoration: none;
   color: #f5f5f5;
@@ -68,56 +52,28 @@ body {
   border-radius: 999px;
   background: #1a1a1a;
   border: 1px solid #2a2a2a;
-  transition: all 0.2s ease;
 }
 
-.nav-links a:hover {
-  background: #ffffff;
-  color: #000000;
-}
-
+.nav-links a:hover,
 .nav-links a.active {
-  background: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+  background: #fff;
+  color: #000;
 }
 
 .content-card {
-  background: #181818;
+  background: #1f1f1f; /* Helleres Dunkelgrau */
   border-radius: 24px;
   padding: 40px 50px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.7);
 }
 
-h1, h2, h3 {
-  text-align: center;
-}
+h1, h2, h3 { text-align: center; font-family: "Agency FB"; }
 
-h1 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 48px;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
+h1 { font-size: 48px; margin-bottom: 30px; }
+h2 { font-size: 34px; margin-bottom: 25px; }
+h3 { font-size: 28px; margin-top: 35px; margin-bottom: 20px; }
 
-h2 {
-  font-family: "Agency FB", sans-serif;
-  font-size: 34px;
-  margin-bottom: 25px;
-  letter-spacing: 1px;
-}
-
-h3 {
-  font-family: "Agency FB", sans-serif;
-  font-size: 28px;
-  margin-top: 35px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-p, ul {
-  text-align: left;
-}
+p, ul { text-align: left; }
 
 p {
   line-height: 1.8;
@@ -138,8 +94,10 @@ ul {
 }
 </style>
 </head>
+
 <body>
 <div class="page-wrapper">
+
 <header class="nav-bar">
   <div class="logo">KI-Projekt</div>
   <nav class="nav-links">
@@ -160,8 +118,7 @@ ul {
   <p>
     Künstliche Intelligenz (KI) ist schon lange Teil unseres Alltags, oft ohne, dass wir es merken.
     Ob beim Scrollen durch Social Media, beim Navigieren mit Google Maps, beim Entsperren des Smartphones
-    oder beim Schreiben mit ChatGPT – KI begleitet uns fast immer. Doch wie gut verstehen Menschen diese Technologien?
-    Wie bewusst nutzen wir KI? Und welche Chancen oder Risiken sehen wir darin?
+    oder beim Schreiben mit ChatGPT – KI begleitet uns fast immer.
   </p>
 
   <p>
@@ -176,10 +133,6 @@ ul {
     <li>Einem Quiz und einem ChatBot</li>
   </ul>
 
-  <p>
-    Die oben aufgeführten Reiter der Website dienen dabei als einzelne, vertiefte Kapitel zu den jeweiligen Bereichen.
-  </p>
-
   <h3>Die spannendsten Erkenntnisse unserer Umfrage</h3>
 
   <ul>
@@ -190,6 +143,7 @@ ul {
     <li><span class="percent">41%</span> kennen die ökologischen Auswirkungen von KI nur „zum Teil“, <span class="percent">7%</span> gar nicht</li>
     <li>Die Mehrheit sieht Potenzial in KI – vermischt mit Risiken</li>
   </ul>
+
 </main>
 </div>
 </body>
