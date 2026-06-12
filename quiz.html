@@ -14,7 +14,11 @@
             display: flex;
             justify-content: center;
         }
-        .page-wrapper { width: 100%; max-width: 1100px; }
+
+        .page-wrapper { 
+            width: 100%; 
+            max-width: 1100px; 
+        }
 
         .nav-bar {
             display: flex;
@@ -26,14 +30,17 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
+
         .logo {
             font-family: "Bauhaus 93";
             font-size: 26px;
         }
+
         .nav-links {
             display: flex;
             gap: 14px;
         }
+
         .nav-links a {
             font-family: "Agency FB";
             font-size: 16px;
@@ -44,6 +51,7 @@
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
         }
+
         .nav-links a:hover,
         .nav-links a.active {
             background: #fff;
@@ -95,6 +103,7 @@
             cursor: pointer;
             margin-top: 20px;
         }
+
         button:hover {
             background: #e5e5e5;
         }
@@ -111,6 +120,7 @@
         .correct {
             border: 2px solid #2ecc71;
         }
+
         .wrong {
             border: 2px solid #e74c3c;
         }
@@ -118,147 +128,134 @@
 </head>
 
 <body>
-<div class="page-wrapper">
+    <div class="page-wrapper">
 
-    <!-- NAVIGATION -->
-    <header class="nav-bar">
-        <div class="logo">KI-Projekt</div>
-        <nav class="nav-links">
-            <a href="index.html">Startseite</a>
-            <a href="umfrage.html">Umfrage</a>
-            <a href="potenzial-ki.html">Potenzial KI</a>
-            <a href="auswirkungen-ki.html">Auswirkungen KI</a>
-            <a href="quiz.html" class="active">Quiz</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="quellen.html">Quellen</a>
-        </nav>
-    </header>
+        <!-- NAVIGATION -->
+        <header class="nav-bar">
+            <div class="logo">KI-Projekt</div>
 
-    <main class="content-card">
+            <nav class="nav-links">
+                <a href="index.html">Startseite</a>
+                <a href="umfrage.html">Umfrage</a>
+                <a href="potenzial-ki.html">Potenzial KI</a>
+                <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+                <a href="quiz.html" class="active">Quiz</a>
+                <a href="chatbot.html">Chatbot</a>
+                <a href="quellen.html">Quellen</a>
+            </nav>
+        </header>
 
-        <h1>Quiz – Künstliche Intelligenz</h1>
+        <main class="content-card">
 
-        <form id="quizForm">
+            <h1>Quiz – Künstliche Intelligenz</h1>
 
-            <!-- Frage 1 -->
-            <div class="question-box" id="q1box">
-                <div class="question">1. Was versteht man im Kontext der Informatik unter „Künstlicher Intelligenz“?</div>
-                <label><input type="radio" name="q1" value="0"> Die biologische Nachbildung eines menschlichen Gehirns.</label>
-                <label><input type="radio" name="q1" value="1"> Ein System, das menschliche Fähigkeiten wie Lernen und Planen logisch nachbilden kann.</label>
-                <label><input type="radio" name="q1" value="0"> Jedes elektronische Gerät mit Ein- und Ausschalter.</label>
-                <label><input type="radio" name="q1" value="0"> Eine reine Suchmaschine für Stichworte.</label>
-            </div>
+            <form id="quizForm">
 
-            <!-- Frage 2 -->
-            <div class="question-box" id="q2box">
-                <div class="question">2. Welche Technologie bildet die Grundlage moderner KI-Systeme?</div>
-                <label><input type="radio" name="q2" value="1"> Maschinelles Lernen und künstliche neuronale Netze</label>
-                <label><input type="radio" name="q2" value="0"> Mechanische Zahnradgetriebe und Lochkarten</label>
-                <label><input type="radio" name="q2" value="0"> Analoge Radiowellen</label>
-                <label><input type="radio" name="q2" value="0"> Reine Textdatenbanken</label>
-            </div>
+                <!-- Frage 1 -->
+                <div class="question-box" id="q1box">
+                    <div class="question">1. Was versteht man im Kontext der Informatik unter „Künstlicher Intelligenz“?</div>
 
-            <!-- Frage 3 -->
-            <div class="question-box" id="q3box">
-                <div class="question">3. Warum wird KI oft kontrovers diskutiert?</div>
-                <label><input type="radio" name="q3" value="1"> Wegen Chancen, aber auch Risiken für Arbeitsmarkt, Datenschutz und Ethik.</label>
-                <label><input type="radio" name="q3" value="0"> Weil KI viel Platz im Wohnzimmer einnimmt.</label>
-                <label><input type="radio" name="q3" value="0"> Weil KI nur von Informatikern genutzt werden kann.</label>
-                <label><input type="radio" name="q3" value="0"> Weil KI weltweit verboten ist.</label>
-            </div>
+                    <label><input type="radio" name="q1" value="0"> Die biologische Nachbildung eines menschlichen Gehirns.</label>
+                    <label><input type="radio" name="q1" value="1"> Ein System, das menschliche Fähigkeiten wie Lernen und Planen logisch nachbilden kann.</label>
+                    <label><input type="radio" name="q1" value="0"> Jedes elektronische Gerät mit Ein- und Ausschalter.</label>
+                    <label><input type="radio" name="q1" value="0"> Eine reine Suchmaschine für Stichworte.</label>
+                </div>
 
-            <!-- Frage 4 -->
-            <div class="question-box" id="q4box">
-                <div class="question">4. Welcher Umweltfaktor wird bei KI kritisiert?</div>
-                <label><input type="radio" name="q4" value="1"> Der extrem hohe Strom- und Wasserverbrauch von Rechenzentren</label>
-                <label><input type="radio" name="q4" value="0"> Lärmbelästigung durch Smartphones</label>
-                <label><input type="radio" name="q4" value="0"> Giftige Gase beim Schreiben eines Prompts</label>
-                <label><input type="radio" name="q4" value="0"> Zu wenig Speicherplatz auf Festplatten</label>
-            </div>
+                <!-- Frage 2 -->
+                <div class="question-box" id="q2box">
+                    <div class="question">2. Welche Technologie bildet die Grundlage moderner KI‑Systeme?</div>
 
-            <!-- Frage 5 -->
-            <div class="question-box" id="q5box">
-                <div class="question">5. In welchem Bereich ist KI schon lange integriert?</div>
-                <label><input type="radio" name="q5" value="1"> Empfehlungsalgorithmen von Streaming-Diensten</label>
-                <label><input type="radio" name="q5" value="0"> Analoge Straßenschilder</label>
-                <label><input type="radio" name="q5" value="0"> Mechanische Armbanduhren</label>
-                <label><input type="radio" name="q5" value="0"> Gedruckte Telefonbücher</label>
-            </div>
+                    <label><input type="radio" name="q2" value="1"> Maschinelles Lernen und künstliche neuronale Netze</label>
+                    <label><input type="radio" name="q2" value="0"> Mechanische Zahnradgetriebe und Lochkarten</label>
+                    <label><input type="radio" name="q2" value="0"> Analoge Radiowellen und Satellitensignale</label>
+                    <label><input type="radio" name="q2" value="0"> Reine Textdatenbanken ohne mathematische Verknüpfungen</label>
+                </div>
 
-            <!-- Frage 6 -->
-            <div class="question-box" id="q6box">
-                <div class="question">6. Was bedeutet „Halluzinieren“ bei KI-Modellen?</div>
-                <label><input type="radio" name="q6" value="1"> Die KI erfindet plausible, aber falsche Fakten.</label>
-                <label><input type="radio" name="q6" value="0"> Die KI schaltet sich ab.</label>
-                <label><input type="radio" name="q6" value="0"> Die KI spricht eine neue Sprache.</label>
-                <label><input type="radio" name="q6" value="0"> Der Bildschirm flackert bunt.</label>
-            </div>
+                <!-- Frage 3 -->
+                <div class="question-box" id="q3box">
+                    <div class="question">3. Warum wird KI gesellschaftlich oft kontrovers diskutiert?</div>
 
-            <button type="button" onclick="auswerten()">Quiz auswerten</button>
-        </form>
+                    <label><input type="radio" name="q3" value="0"> Weil KI-Systeme extrem viel Platz im Wohnzimmer einnehmen.</label>
+                    <label><input type="radio" name="q3" value="0"> Weil KI nur von Informatikern genutzt werden kann.</label>
+                    <label><input type="radio" name="q3" value="1"> Wegen Chancen und Risiken für Arbeitsmarkt, Datenschutz und Ethik.</label>
+                    <label><input type="radio" name="q3" value="0"> Weil KI weltweit gesetzlich verboten ist.</label>
+                </div>
 
-        <div id="result"></div>
+                <!-- Frage 4 -->
+                <div class="question-box" id="q4box">
+                    <div class="question">4. Welcher Umweltfaktor wird bei KI‑Modellen kritisiert?</div>
 
-    </main>
-</div>
+                    <label><input type="radio" name="q4" value="1"> Hoher Strom- und Wasserverbrauch der Rechenzentren</label>
+                    <label><input type="radio" name="q4" value="0"> Lärmbelästigung durch Smartphones</label>
+                    <label><input type="radio" name="q4" value="0"> Giftige Gase beim Schreiben eines Prompts</label>
+                    <label><input type="radio" name="q4" value="0"> Zu wenig Speicherplatz auf Nutzergeräten</label>
+                </div>
 
-<script>
-function auswerten() {
-    let score = 0;
-    const resultBox = document.getElementById("result");
+                <!-- Frage 5 -->
+                <div class="question-box" id="q5box">
+                    <div class="question">5. In welchem Bereich ist KI schon lange unbemerkt integriert?</div>
 
-    // Richtige Antworten
-    const correctAnswers = {
-        q1: "1",
-        q2: "1",
-        q3: "1",
-        q4: "1",
-        q5: "1",
-        q6: "1"
-    };
+                    <label><input type="radio" name="q5" value="0"> Analoge Straßenschilder</label>
+                    <label><input type="radio" name="q5" value="1"> Empfehlungsalgorithmen von Streaming‑Diensten</label>
+                    <label><input type="radio" name="q5" value="0"> Mechanische Armbanduhren</label>
+                    <label><input type="radio" name="q5" value="0"> Gedruckte Telefonbücher</label>
+                </div>
 
-    let wrongList = [];
+                <!-- Frage 6 -->
+                <div class="question-box" id="q6box">
+                    <div class="question">6. Was bedeutet „Halluzinieren“ bei KI‑Modellen?</div>
 
-    // Reset Farben
-    for (let i = 1; i <= 6; i++) {
-        document.getElementById("q" + i + "box").classList.remove("correct", "wrong");
-    }
+                    <label><input type="radio" name="q6" value="0"> Die KI schaltet sich selbstständig ab.</label>
+                    <label><input type="radio" name="q6" value="0"> Die KI spricht eine Sprache, die sie nicht gelernt hat.</label>
+                    <label><input type="radio" name="q6" value="1"> Die KI erfindet plausible, aber falsche Fakten.</label>
+                    <label><input type="radio" name="q6" value="0"> Der Bildschirm flackert in bunten Farben.</label>
+                </div>
 
-    // Auswertung
-    for (let i = 1; i <= 6; i++) {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                <button type="button" onclick="evaluateQuiz()">Auswerten</button>
+            </form>
 
-        if (!selected) {
-            alert("Bitte alle Fragen beantworten.");
-            return;
+            <div id="result"></div>
+
+        </main>
+    </div>
+
+    <script>
+        function evaluateQuiz() {
+            let score = 0;
+
+            const correctAnswers = {
+                q1: "1",
+                q2: "1",
+                q3: "1",
+                q4: "1",
+                q5: "1",
+                q6: "1"
+            };
+
+            for (let q in correctAnswers) {
+                const box = document.getElementById(q + "box");
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+
+                if (!selected) {
+                    box.classList.add("wrong");
+                    continue;
+                }
+
+                if (selected.value === correctAnswers[q]) {
+                    score++;
+                    box.classList.remove("wrong");
+                    box.classList.add("correct");
+                } else {
+                    box.classList.remove("correct");
+                    box.classList.add("wrong");
+                }
+            }
+
+            const resultBox = document.getElementById("result");
+            resultBox.style.display = "block";
+            resultBox.innerHTML = `Du hast <strong>${score}</strong> von <strong>6</strong> Fragen richtig beantwortet.`;
         }
-
-        if (selected.value === correctAnswers["q" + i]) {
-            score++;
-            document.getElementById("q" + i + "box").classList.add("correct");
-        } else {
-            wrongList.push(i);
-            document.getElementById("q" + i + "box").classList.add("wrong");
-        }
-    }
-
-    // Ergebnis anzeigen
-    resultBox.style.display = "block";
-
-    if (wrongList.length === 0) {
-        resultBox.innerHTML = `
-            <strong>Perfekt!</strong><br>
-            Du hast alle 6 Fragen richtig beantwortet.
-        `;
-    } else {
-        resultBox.innerHTML = `
-            <strong>Dein Ergebnis:</strong><br><br>
-            Du hast <strong>${score} von 6 Punkten</strong> erreicht.<br><br>
-            <strong>Falsch beantwortet:</strong> Frage(n): ${wrongList.join(", ")}
-        `;
-    }
-}
-</script>
+    </script>
 
 </body>
 </html>
