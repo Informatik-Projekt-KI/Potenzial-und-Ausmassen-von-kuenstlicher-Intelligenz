@@ -4,439 +4,277 @@
     <meta charset="UTF-8">
     <title>Umfrage – KI-Projekt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Wordcloud Library -->
-    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.js"></script>
-
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: #000000;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            background:#000;
+            color:#fff;
+            font-family:Arial;
+            padding:20px;
+            display:flex;
+            justify-content:center;
         }
-        .page-wrapper { width: 100%; max-width: 1100px; }
+
+        .page-wrapper {
+            width:100%;
+            max-width:1100px;
+        }
 
         .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #111111;
-            border-radius: 18px;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:#111;
+            padding:10px 20px;
+            border-radius:18px;
+            margin-bottom:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.6);
         }
+
         .logo {
-            font-family: "Bauhaus 93", sans-serif;
-            font-size: 26px;
+            font-family:"Bauhaus 93";
+            font-size:26px;
         }
+
         .nav-links {
-            display: flex;
-            gap: 14px;
+            display:flex;
+            gap:14px;
         }
+
         .nav-links a {
-            font-family: "Agency FB", sans-serif;
-            font-size: 16px;
-            text-decoration: none;
-            color: #f5f5f5;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            transition: 0.2s;
+            font-family:"Agency FB";
+            font-size:16px;
+            text-decoration:none;
+            color:#fff;
+            padding:8px 14px;
+            border-radius:999px;
+            background:#1a1a1a;
+            border:1px solid #2a2a2a;
         }
+
+        .nav-links a.active,
         .nav-links a:hover {
-            background: #ffffff;
-            color: #000000;
-        }
-        .nav-links a.active {
-            background: #ffffff;
-            color: #000000;
+            background:#fff;
+            color:#000;
         }
 
         .content-card {
-            background: #181818;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-            overflow-y: auto;
+            background:#181818;
+            padding:30px;
+            border-radius:24px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.7);
+        }
+
+        h1,h2 {
+            text-align:center;
+            font-family:"Agency FB";
+            letter-spacing:1px;
         }
 
         h1 {
-            font-family: "Bauhaus 93", sans-serif;
-            font-size: 40px;
-            margin-bottom: 20px;
+            font-size:40px;
+            margin-bottom:20px;
         }
+
         h2 {
-            font-family: "Agency FB", sans-serif;
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size:28px;
+            margin-top:40px;
+            margin-bottom:10px;
+        }
+
+        p {
+            font-size:17px;
+            line-height:1.7;
+            margin-bottom:10px;
         }
 
         .question-box {
-            background: #202020;
-            padding: 20px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background:#202020;
+            padding:20px;
+            border-radius:18px;
+            margin-bottom:30px;
         }
 
-        /* Kreisdiagramme */
-        canvas.small-chart {
-            max-width: 260px;
-            max-height: 260px;
-        }
-
-        /* Wordcloud Container */
-        .wordcloud {
-            width: 100%;
-            height: 260px;
-            margin-top: 20px;
-            background: #151515;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        /* Legenden rechts */
-        .chart-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        .legend-box {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            font-size: 14px;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .legend-color {
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-        }
-
-        /* Frage 7 – großes Diagramm */
-        #chart7 {
-            width: 1000px;
-            height: 1400px;
+        canvas {
+            margin-top:20px;
         }
     </style>
 </head>
 
 <body>
-<div class="page-wrapper">
+    <div class="page-wrapper">
 
-    <!-- NAVIGATION -->
-    <header class="nav-bar">
-        <div class="logo">KI-Projekt</div>
-        <nav class="nav-links">
-            <a href="index.html">Startseite</a>
-            <a href="umfrage.html" class="active">Umfrage</a>
-            <a href="potenzial-ki.html">Potenzial KI</a>
-            <a href="auswirkungen-ki.html">Auswirkungen KI</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="quellen.html">Quellen</a>
-        </nav>
-    </header>
+        <!-- NAVIGATION -->
+        <header class="nav-bar">
+            <div class="logo">KI-Projekt</div>
 
-    <main class="content-card">
-        <h1>Umfrage – Ergebnisse</h1>
+            <nav class="nav-links">
+                <a href="index.html">Startseite</a>
+                <a href="umfrage.html" class="active">Umfrage</a>
+                <a href="potenzial-ki.html">Potenzial KI</a>
+                <a href="auswirkungen-ki.html">Auswirkungen KI</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="chatbot.html">Chatbot</a>
+                <a href="quellen.html">Quellen</a>
+            </nav>
+        </header>
 
-        <!-- EINLEITUNG -->
-        <div class="question-box">
-            <p style="font-size: 18px; line-height: 1.6;">
-                Die folgenden Fragen waren Teil unserer Umfrage und die jeweiligen Antwort-Statistiken sollen helfen, die Vielfalt der Antworten visuell besser darzustellen.
-            </p>
-        </div>
+        <main class="content-card">
 
-        <!-- FRAGE 1 -->
-        <div class="question-box">
-            <h2>1. Wie alt sind Sie?</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart1" class="small-chart"></canvas>
-                <div class="legend-box" id="legend1"></div>
+            <h1>Umfrage – Ergebnisse</h1>
+
+            <!-- DIAGRAMM 1 -->
+            <div class="question-box">
+                <h2>Alter der Teilnehmenden</h2>
+                <canvas id="q1"></canvas>
             </div>
-        </div>
 
-        <!-- FRAGE 2 -->
-        <div class="question-box">
-            <h2>2. Welches Geschlecht haben Sie?</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart2" class="small-chart"></canvas>
-                <div class="legend-box" id="legend2"></div>
+            <!-- DIAGRAMM 2 -->
+            <div class="question-box">
+                <h2>Geschlecht</h2>
+                <canvas id="q2"></canvas>
             </div>
-        </div>
 
-        <!-- FRAGE 3 -->
-        <div class="question-box">
-            <h2>3. Wie oft nutzen Sie künstliche Intelligenz?</h2>
-            <canvas id="chart3"></canvas>
-        </div>
-
-        <!-- FRAGE 4 -->
-        <div class="question-box">
-            <h2>4. Wie würden Sie das Wort „künstliche Intelligenz“ definieren?</h2>
-            <div id="wordcloud4" class="wordcloud"></div>
-        </div>
-
-        <!-- FRAGE 5 -->
-        <div class="question-box">
-            <h2>5. Wie ist Ihre Beziehung zu künstlicher Intelligenz?</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart5" class="small-chart"></canvas>
-                <div class="legend-box" id="legend5"></div>
+            <!-- DIAGRAMM 3 -->
+            <div class="question-box">
+                <h2>Nutzungshäufigkeit von KI</h2>
+                <canvas id="q3"></canvas>
             </div>
-        </div>
 
-        <!-- FRAGE 6 -->
-        <div class="question-box">
-            <h2>6. Wissen Sie welche ökologischen Auswirkungen künstliche Intelligenz hat?</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart6" class="small-chart"></canvas>
-                <div class="legend-box" id="legend6"></div>
+            <!-- DIAGRAMM 4 -->
+            <div class="question-box">
+                <h2>Beziehung zu KI</h2>
+                <canvas id="q5"></canvas>
             </div>
-        </div>
 
-        <!-- FRAGE 7 -->
-        <div class="question-box">
-            <h2>7. Von welchen der folgenden Geräten oder Dienstleistungen wussten Sie, dass sie künstliche Intelligenz verwenden?</h2>
-            <canvas id="chart7"></canvas>
-        </div>
-
-        <!-- FRAGE 8 -->
-        <div class="question-box">
-            <h2>8. Waren Sie sich bewusst in wie vielen Bereichen künstliche Intelligenz schon verwendet wird?</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart8" class="small-chart"></canvas>
-                <div class="legend-box" id="legend8"></div>
+            <!-- DIAGRAMM 5 -->
+            <div class="question-box">
+                <h2>Bewusstsein für ökologische Auswirkungen</h2>
+                <canvas id="q6"></canvas>
             </div>
-        </div>
 
-        <!-- FRAGE 9 -->
-        <div class="question-box">
-            <h2>9. In welchen Bereichen würden Sie sich die Anwendung von künstlicher Intelligenz wünschen?</h2>
-            <div id="wordcloud9" class="wordcloud"></div>
-        </div>
+            <!-- DIAGRAMM 6 -->
+            <div class="question-box">
+                <h2>Bekannte KI‑Anwendungen</h2>
+                <canvas id="q7"></canvas>
+            </div>
 
-    </main>
-</div>
-<script>
-/* Hilfsfunktion: Legendenerstellung */
-function createLegend(chart, legendId) {
-    const legendBox = document.getElementById(legendId);
-    legendBox.innerHTML = "";
+            <!-- DIAGRAMM 7 -->
+            <div class="question-box">
+                <h2>Überraschung über KI‑Verbreitung</h2>
+                <canvas id="q8"></canvas>
+            </div>
 
-    chart.data.labels.forEach((label, i) => {
-        const color = chart.data.datasets[0].backgroundColor[i];
+        </main>
+    </div>
 
-        const item = document.createElement("div");
-        item.className = "legend-item";
+    <script>
+        /* DIAGRAMM 1 */
+        new Chart(document.getElementById("q1"), {
+            type: "bar",
+            data: {
+                labels: ["12–20", "21–30", "31–45", "45–60", "60+"],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [118, 10, 5, 3, 2],
+                    backgroundColor: "#3498db"
+                }]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-        const colorBox = document.createElement("div");
-        colorBox.className = "legend-color";
-        colorBox.style.backgroundColor = color;
+        /* DIAGRAMM 2 */
+        new Chart(document.getElementById("q2"), {
+            type: "bar",
+            data: {
+                labels: ["Weiblich", "Männlich", "Divers"],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [100, 35, 3],
+                    backgroundColor: "#9b59b6"
+                }]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-        const text = document.createElement("span");
-        text.textContent = label;
+        /* DIAGRAMM 3 */
+        new Chart(document.getElementById("q3"), {
+            type: "bar",
+            data: {
+                labels: ["Stündlich", "Mehrmals/Tag", "Mehrmals/Woche", "Einmal/Woche", "Mehrmals/Monat", "Einmal/Monat"],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [2, 38, 60, 19, 10, 9],
+                    backgroundColor: "#1abc9c"
+                }]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-        item.appendChild(colorBox);
-        item.appendChild(text);
-        legendBox.appendChild(item);
-    });
-}
+        /* DIAGRAMM 4 */
+        new Chart(document.getElementById("q5"), {
+            type: "bar",
+            data: {
+                labels: ["Neutral", "Potenzial", "Angst", "Gegen KI"],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [70, 66, 16, 8],
+                    backgroundColor: "#e67e22"
+                }]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* ---------------------- FRAGE 1 ---------------------- */
-const chart1 = new Chart(document.getElementById("chart1"), {
-    type: "pie",
-    data: {
-        labels: ["12–20 Jahre", "21–30 Jahre", "31–45 Jahre", "45–60 Jahre", "60+ Jahre"],
-        datasets: [{
-            data: [119, 0, 6, 11, 2],
-            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0", "#7ED321"]
-        }]
-    },
-    options: { plugins: { legend: { display: false } } }
-});
-createLegend(chart1, "legend1");
+        /* DIAGRAMM 5 */
+        new Chart(document.getElementById("q6"), {
+            type: "bar",
+            data: {
+                labels: ["Ja", "Zum Teil", "Nein"],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [43, 64, 14],
+                    backgroundColor: "#2ecc71"
+                }]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
 
-/* ---------------------- FRAGE 2 ---------------------- */
-const chart2 = new Chart(document.getElementById("chart2"), {
-    type: "pie",
-    data: {
-        labels: ["Weiblich", "Männlich", "Divers"],
-        datasets: [{
-            data: [99, 36, 3],
-            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
-        }]
-    },
-    options: { plugins: { legend: { display: false } } }
-});
-createLegend(chart2, "legend2");
+        /* DIAGRAMM 6 */
+        new Chart(document.getElementById("q7"), {
+            type: "bar",
+            data: {
+                labels: [
+                    "Smart Home", "Sprachassistenten", "Fitness-Tracker", "E-Mail Filter",
+                    "Suchmaschinen", "Chatbots", "Navigation", "Streaming",
+                    "Online-Shopping", "Flug-Buchungen", "Autonome Fahrzeuge",
+                    "Kreditkartenbetrug", "Face ID", "Produktentwicklung",
+                    "Jobfilter", "Medizin", "ChatGPT", "Lern-KI",
+                    "Kamera-Optimierung", "Bild/Video KI", "Fake News"
+                ],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [100, 120, 80, 90, 110, 121, 95, 36, 70, 40, 30, 50, 85, 45, 25, 60, 121, 70, 90, 100, 55],
+                    backgroundColor: "#f1c40f"
+                }]
+            },
+            options: { responsive: true }
+        });
 
-/* ---------------------- FRAGE 3 ---------------------- */
-new Chart(document.getElementById("chart3"), {
-    type: "bar",
-    data: {
-        labels: ["stündlich", "mehrmals am Tag", "mehrmals in der Woche", "einmal die Woche", "mehrmals im Monat", "einmal im Monat"],
-        datasets: [{
-            label: "Anzahl",
-            data: [2, 38, 60, 19, 10, 9],
-            backgroundColor: "#4A90E2"
-        }]
-    },
-    options: {
-        indexAxis: "y",
-        plugins: { legend: { display: false } }
-    }
-});
+        /* DIAGRAMM 7 */
+        new Chart(document.getElementById("q8"), {
+            type: "bar",
+            data: {
+                labels: ["Ja, kenne mehr", "Nein, überrascht", "Nein, erwartet"],
+                datasets: [{
+                    label: "Anzahl",
+                    data: [20, 90, 28],
+                    backgroundColor: "#e74c3c"
+                }]
+            },
+            options: { indexAxis: "y", responsive: true }
+        });
+    </script>
 
-/* ---------------------- FRAGE 4 – WORDCLOUD ---------------------- */
-WordCloud(document.getElementById('wordcloud4'), {
-    list: [
-        ["Intelligenz", 40], ["Menschen", 25], ["Maschine", 22], ["Computer", 20],
-        ["menschliche", 18], ["KI", 17], ["Wissen", 15], ["Fragen", 14],
-        ["Antwort", 14], ["Daten", 13], ["Roboter", 12], ["Internet", 12],
-        ["Hilfe", 11], ["Gehirn", 10], ["Algorithmen", 10], ["künstliche Intelligenz", 9]
-    ],
-    gridSize: 12,
-    weightFactor: 2.2,
-    color: "#ffffff",
-    backgroundColor: "#151515",
-    shrinkToFit: true
-});
-
-/* ---------------------- FRAGE 5 ---------------------- */
-const chart5 = new Chart(document.getElementById("chart5"), {
-    type: "pie",
-    data: {
-        labels: [
-            "Ich stehe neutral zu KI",
-            "Ich habe Angst vor KI",
-            "Ich sehe das Potenzial in der Entwicklung von KI",
-            "Ich bin gegen KI"
-        ],
-        datasets: [{
-            data: [57, 12, 52, 17],
-            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2", "#BD10E0"]
-        }]
-    },
-    options: { plugins: { legend: { display: false } } }
-});
-createLegend(chart5, "legend5");
-
-/* ---------------------- FRAGE 6 ---------------------- */
-const chart6 = new Chart(document.getElementById("chart6"), {
-    type: "doughnut",
-    data: {
-        labels: ["Ja", "Zum Teil", "Nein"],
-        datasets: [{
-            data: [73, 56, 9],
-            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
-        }]
-    },
-    options: { plugins: { legend: { display: false } } }
-});
-createLegend(chart6, "legend6");
-
-/* ---------------------- FRAGE 7 – KOMBINIERTE VERSION ---------------------- */
-new Chart(document.getElementById("chart7"), {
-    type: "bar",
-    data: {
-        labels: [
-            "Smart Home Geräte",
-            "Sprach Assistenten",
-            "Persönliche Fitness-Tracker",
-            "E-Mail Filterung",
-            "Suchmaschinen",
-            "Chatbots im Kundenservice",
-            "Navigationssysteme",
-            "Streaming",
-            "Online-Shopping und Werbung",
-            "Flug-Buchungen (Preis Verhältnis)",
-            "Autonome Fahrzeuge",
-            "Erkennung von Kreditkartenbetrug",
-            "Face ID / Gesichtserkennung",
-            "Produktentwicklungen",
-            "Filterung von Job-Bewerbungen",
-            "In der Forschung und Entwicklung neuer Medikamente / Unterstützung bei Operationen",
-            "Chatbots wie ChatGPT, etc.",
-            "KI-Tools zum Lernen",
-            "Optimierung von Bildern in Kamera Apps",
-            "Bild und Video Generierung / Erkennung",
-            "Generierung von Fake News",
-            "Sonstiges"
-        ],
-        datasets: [{
-            label: "Anzahl",
-            data: [
-                90, 115, 75, 57, 111, 121, 58, 36, 69, 42, 90, 47,
-                78, 63, 72, 63, 136, 134, 94, 122, 107, 6
-            ],
-            backgroundColor: "#4A90E2"
-        }]
-    },
-    options: {
-        indexAxis: "y",
-        responsive: false,
-        maintainAspectRatio: false,
-        plugins: { 
-            legend: { display: false },
-            tooltip: { enabled: true }
-        },
-        scales: {
-            y: { ticks: { color: "#ffffff", font: { size: 12 } } },
-            x: { ticks: { color: "#ffffff" } }
-        }
-    }
-});
-
-/* ---------------------- FRAGE 8 ---------------------- */
-const chart8 = new Chart(document.getElementById("chart8"), {
-    type: "doughnut",
-    data: {
-        labels: [
-            "Ja, ich kenne sogar noch mehr",
-            "Nein, ich war überrascht",
-            "Nein, aber ich habe es erwartet"
-        ],
-        datasets: [{
-            data: [36, 23, 79],
-            backgroundColor: ["#4A90E2", "#FF66CC", "#50E3C2"]
-        }]
-    },
-    options: { plugins: { legend: { display: false } } }
-});
-createLegend(chart8, "legend8");
-
-/* ---------------------- FRAGE 9 – WORDCLOUD ---------------------- */
-WordCloud(document.getElementById('wordcloud9'), {
-    list: [
-        ["Medizin", 40], ["Schule", 25], ["Forschung", 20], ["Menschen", 18],
-        ["Arbeit", 16], ["Erde", 15], ["Kochen", 14], ["Essen", 14],
-        ["Lernen", 13], ["Kunst", 12], ["Bereichen", 12], ["KI", 11],
-        ["Person", 10], ["Ahnung", 9], ["Keiner", 8], ["ka", 8]
-    ],
-    gridSize: 12,
-    weightFactor: 2.2,
-    color: "#ffffff",
-    backgroundColor: "#151515",
-    shrinkToFit: true
-});
-</script>
 </body>
 </html>
